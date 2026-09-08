@@ -1,0 +1,289 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Subtest {
+  ORD
+  LAS
+  MEK
+  ELF
+  XYZ
+  KVA
+  NOG
+  DTK
+}
+
+enum PreviousAttempts {
+  NONE
+  ONCE
+  MULTIPLE
+}
+
+enum SessionType {
+  DIAGNOSTIC
+  QUICK
+  PRACTICE
+  FULL_TEST
+}
+
+enum ErrorReason {
+  CONCEPT
+  CARELESS
+  MISREAD
+  TIME
+  GUESS
+  MISUNDERSTOOD
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String?
+  createdAt     DateTime  @default(now())
+  isAdmin       Boolean   @default(false)
+
+  profile           Profile?
+  attempts          QuestionAttempt[]
+  sessions          StudySession[]
+  testAttempts      TestAttempt[]
+  studyPlans        StudyPlan[]
+  userAchievements  UserAchievement[]
+  xpEvents          XPEvent[]
+  masteries         ConceptMastery[]
+  notifications     Notification[]
+  insights          AIInsight[]
+  friendsInitiated  Friendship[] @relation("FriendInitiator")
+  friendsReceived   Friendship[] @relation("FriendReceiver")
+}
+
+model Profile {
+  id                String            @id @default(cuid())
+  userId            String            @unique
+  user              User              @relation(fields: [userId], references: [id])
+  goalScore         Float?
+  examDate          DateTime?
+  previousAttempts  PreviousAttempts  @default(NONE)
+  previousScore     Float?
+  selfAssessment    String?           // JSON: { ORD: 3, KVA: 2, ... } 1-5
+  onboardingDone    Boolean           @default(false)
+  currentEstimate   Float             @default(0.8)
+  level             Int               @default(1)
+  xp                Int               @default(0)
+  streakCount       Int               @default(0)
+  streakLastActive  DateTime?
+  streakFreezes     Int               @default(1)
+  studyStyle        String?
+  bestStudyHour     Int?
+  totalStudySeconds Int               @default(0)
+  updatedAt         DateTime          @updatedAt
+}
+
+model Question {
+  id               String   @id @default(cuid())
+  subtest          Subtest
+  concept          String
+  difficulty       Float    @default(0.0) // -3..3 logit scale
+  stem             String
+  options          String   // JSON array of strings
+  correctIndex     Int
+  explanationShort String
+  explanationSteps String   // JSON array of strings
+  hint1            String?
+  hint2            String?
+  hint3            String?
+  timesAnswered    Int      @default(0)
+  timesCorrect     Int      @default(0)
+  avgSolveTimeSec  Float    @default(0)
+  isDemo           Boolean  @default(true)
+  createdAt        DateTime @default(now())
+
+  attempts         QuestionAttempt[]
+  testQuestions    TestQuestion[]
+  testAnswers      TestAnswer[]
+}
+
+model QuestionAttempt {
+  id            String       @id @default(cuid())
+  userId        String
+  user          User         @relation(fields: [userId], references: [id])
+  questionId    String
+  question      Question     @relation(fields: [questionId], references: [id])
+  sessionId     String?
+  session       StudySession? @relation(fields: [sessionId], references: [id])
+  selectedIndex Int
+  correct       Boolean
+  timeSpentSec  Int
+  errorReason   ErrorReason?
+  hintsUsed     Int          @default(0)
+  createdAt     DateTime     @default(now())
+}
+
+model StudySession {
+  id               String      @id @default(cuid())
+  userId           String
+  user             User        @relation(fields: [userId], references: [id])
+  type             SessionType
+  subtestFocus     String?     // JSON array of Subtest
+  plannedMinutes   Int?
+  startedAt        DateTime    @default(now())
+  completedAt      DateTime?
+  xpEarned         Int         @default(0)
+  questionsCorrect Int         @default(0)
+  questionsTotal   Int         @default(0)
+
+  attempts         QuestionAttempt[]
+}
+
+model Test {
+  id         String   @id @default(cuid())
+  name       String
+  isFull     Boolean  @default(true)
+  isDemo     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  questions  TestQuestion[]
+  attempts   TestAttempt[]
+}
+
+model TestQuestion {
+  id         String   @id @default(cuid())
+  testId     String
+  test       Test     @relation(fields: [testId], references: [id])
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+  order      Int
+  subtest    Subtest
+}
+
+model TestAttempt {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  testId          String
+  test            Test      @relation(fields: [testId], references: [id])
+  startedAt       DateTime  @default(now())
+  completedAt     DateTime?
+  scoreVerbal     Float?
+  scoreQuant      Float?
+  scoreTotal      Float?
+  timeRemainingSec Int?
+
+  answers         TestAnswer[]
+}
+
+model TestAnswer {
+  id            String      @id @default(cuid())
+  testAttemptId String
+  testAttempt   TestAttempt @relation(fields: [testAttemptId], references: [id])
+  questionId    String
+  question      Question    @relation(fields: [questionId], references: [id])
+  selectedIndex Int?
+  correct       Boolean
+  timeSpentSec  Int
+}
+
+model StudyPlan {
+  id          String          @id @default(cuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id])
+  weekStart   DateTime
+  generatedAt DateTime        @default(now())
+
+  items       StudyPlanItem[]
+}
+
+model StudyPlanItem {
+  id          String    @id @default(cuid())
+  studyPlanId String
+  studyPlan   StudyPlan @relation(fields: [studyPlanId], references: [id])
+  dayOfWeek   Int       // 0-6
+  subtest     Subtest?
+  label       String
+  minutes     Int
+  done        Boolean   @default(false)
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  name        String
+  description String
+  icon        String
+  criteria    String   // JSON
+
+  users       UserAchievement[]
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id])
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+}
+
+model XPEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  amount    Int
+  reason    String
+  createdAt DateTime @default(now())
+}
+
+model ConceptMastery {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  subtest       Subtest
+  concept       String
+  rating        Float     @default(1000)
+  attempts      Int       @default(0)
+  correct       Int       @default(0)
+  lastSeenAt    DateTime?
+  nextReviewAt  DateTime?
+
+  @@unique([userId, subtest, concept])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  body      String
+  type      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AIInsight {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String
+  text      String
+  createdAt DateTime @default(now())
+  dismissed Boolean  @default(false)
+}
+
+model Friendship {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation("FriendInitiator", fields: [userId], references: [id])
+  friendId     String
+  friend       User     @relation("FriendReceiver", fields: [friendId], references: [id])
+  status       String   @default("pending") // pending, accepted
+  createdAt    DateTime @default(now())
+
+  @@unique([userId, friendId])
+}
