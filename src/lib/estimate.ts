@@ -2,9 +2,33 @@ import { prisma } from "@/lib/prisma";
 import { DEFAULT_RATING, estimateSubscore, updateElo } from "@/lib/adaptive";
 import { QUANT_SUBTESTS, VERBAL_SUBTESTS } from "@/lib/utils";
 
+const ALL_SUBTESTS = [...VERBAL_SUBTESTS, ...QUANT_SUBTESTS];
+
+export type SubtestBreakdown = Record<string, number | null>; // null = inget koncept tränat än
+
+function summarize(bySubtest: Map<string, number[]>) {
+  const breakdown: SubtestBreakdown = {};
+  for (const s of ALL_SUBTESTS) {
+    const arr = bySubtest.get(s);
+    breakdown[s] = arr && arr.length > 0 ? Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 100) / 100 : null;
+  }
+
+  // Otränade delprov räknas som 0 i totalen - en profil ska starta på noll, inte på en påhittad baseline.
+  const avgFor = (subtests: string[]) => {
+    const scores = subtests.map((s) => breakdown[s] ?? 0);
+    return scores.reduce((a, b) => a + b, 0) / scores.length;
+  };
+
+  const verbal = Math.round(avgFor(VERBAL_SUBTESTS) * 100) / 100;
+  const quant = Math.round(avgFor(QUANT_SUBTESTS) * 100) / 100;
+  const total = Math.round((verbal + quant) * 100) / 100;
+
+  return { total, verbal, quant, bySubtest: breakdown };
+}
+
 export async function computeEstimate(userId: string) {
   const masteries = await prisma.conceptMastery.findMany({ where: { userId } });
-  if (masteries.length === 0) return { total: 0.8, verbal: 0.4, quant: 0.4 };
+  if (masteries.length === 0) return { total: 0, verbal: 0, quant: 0, bySubtest: Object.fromEntries(ALL_SUBTESTS.map((s) => [s, null])) as SubtestBreakdown };
 
   const bySubtest = new Map<string, number[]>();
   for (const m of masteries) {
@@ -13,20 +37,7 @@ export async function computeEstimate(userId: string) {
     bySubtest.set(m.subtest, arr);
   }
 
-  const avgFor = (subtests: string[]) => {
-    const scores = subtests.map((s) => {
-      const arr = bySubtest.get(s);
-      if (!arr || arr.length === 0) return 0.4; // neutral baseline för ej tränade delprov
-      return arr.reduce((a, b) => a + b, 0) / arr.length;
-    });
-    return scores.reduce((a, b) => a + b, 0) / scores.length;
-  };
-
-  const verbal = avgFor(VERBAL_SUBTESTS);
-  const quant = avgFor(QUANT_SUBTESTS);
-  const total = Math.round((verbal + quant) * 100) / 100;
-
-  return { total, verbal: Math.round(verbal * 100) / 100, quant: Math.round(quant * 100) / 100 };
+  return summarize(bySubtest);
 }
 
 /**
@@ -39,7 +50,7 @@ export async function computeEstimateAsOf(userId: string, cutoff: Date) {
     include: { question: { select: { subtest: true, concept: true, difficulty: true } } },
     orderBy: { createdAt: "asc" },
   });
-  if (attempts.length === 0) return { total: 0.8, verbal: 0.4, quant: 0.4 };
+  if (attempts.length === 0) return { total: 0, verbal: 0, quant: 0, bySubtest: Object.fromEntries(ALL_SUBTESTS.map((s) => [s, null])) as SubtestBreakdown };
 
   const ratings = new Map<string, number>();
   for (const a of attempts) {
@@ -56,16 +67,5 @@ export async function computeEstimateAsOf(userId: string, cutoff: Date) {
     bySubtest.set(subtest, arr);
   }
 
-  const avgFor = (subtests: string[]) => {
-    const scores = subtests.map((s) => {
-      const arr = bySubtest.get(s);
-      if (!arr || arr.length === 0) return 0.4;
-      return arr.reduce((a, b) => a + b, 0) / arr.length;
-    });
-    return scores.reduce((a, b) => a + b, 0) / scores.length;
-  };
-
-  const verbal = avgFor(VERBAL_SUBTESTS);
-  const quant = avgFor(QUANT_SUBTESTS);
-  return { total: Math.round((verbal + quant) * 100) / 100, verbal: Math.round(verbal * 100) / 100, quant: Math.round(quant * 100) / 100 };
+  return summarize(bySubtest);
 }

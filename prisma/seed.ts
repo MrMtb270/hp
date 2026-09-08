@@ -1043,6 +1043,397 @@ const questions: QSeed[] = [
     explanationShort: "(1012-920)/920 = 92/920 = 0,10 = 10 %.",
     explanationSteps: ["Ökning: 1012 - 920 = 92 miljoner kr.", "Procentuell ökning: 92 / 920 = 0,10 = 10 %."],
   },
+
+  // ================= SVÅRARE NIVÅ (autentisk högskoleprovs-svårighetsgrad) =================
+
+  // ---------------- ORD (svår nivå) ----------------
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1450,
+    stem: "RECIPROCITET",
+    options: ["Enkelriktning", "Ömsesidighet", "Osäkerhet", "Motvilja"],
+    correctIndex: 1,
+    explanationShort: "Reciprocitet betyder ömsesidighet - att något gäller åt båda hållen.",
+    explanationSteps: ["Ordet är släkt med 'reciprok', som används om ömsesidiga relationer eller matematiska inverser.", "Reciprocitet = ömsesidighet."],
+  },
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1400,
+    stem: "FÖRDUNKLA",
+    options: ["Förtydliga", "Göra oklar eller dunkel", "Belysa", "Förenkla"],
+    correctIndex: 1,
+    explanationShort: "Att fördunkla något är att göra det oklart eller svårförståeligt.",
+    explanationSteps: ["Förleden 'för-' förstärker här grundordet 'dunkel' (oklar, mörk).", "Fördunkla = göra dunklare, alltså mer oklart."],
+  },
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1550,
+    stem: "EKVIVOK",
+    options: ["Entydig", "Tvetydig", "Tydlig", "Bestämd"],
+    correctIndex: 1,
+    explanationShort: "Ekvivok betyder tvetydig - som kan tolkas på mer än ett sätt.",
+    explanationSteps: ["Ordet kommer från latinets 'aequivocus', som betyder 'som låter lika men betyder olika saker'.", "Ekvivok = tvetydig, mångtydig."],
+  },
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1600,
+    stem: "APODIKTISK",
+    options: ["Tvivelaktig", "Orubbligt säker och kategorisk", "Försiktig", "Ödmjuk"],
+    correctIndex: 1,
+    explanationShort: "Apodiktisk betyder orubbligt säker, som inte tillåter någon invändning.",
+    explanationSteps: ["Ordet används om påståenden som framförs som absolut sanna, utan utrymme för tvivel.", "Apodiktisk = kategoriskt säker, orubblig."],
+  },
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1500,
+    stem: "FÖRSTOCKAD",
+    options: ["Öppen för nya idéer", "Envist oemottaglig för förnuftsskäl", "Nyfiken", "Foglig"],
+    correctIndex: 1,
+    explanationShort: "Förstockad betyder envist oemottaglig för förnuft eller nya argument.",
+    explanationSteps: ["Ordet beskriver någon som vägrar ändra uppfattning trots goda skäl.", "Förstockad = envis och stängd för förnuftsargument."],
+  },
+  {
+    subtest: "ORD", concept: "synonymer-avancerade", difficulty: 1350,
+    stem: "LATENT",
+    options: ["Öppen och synlig", "Dold men existerande, kan bli aktiv", "Försvunnen", "Stark"],
+    correctIndex: 1,
+    explanationShort: "Latent betyder dold eller vilande, men med potential att bli synlig eller aktiv.",
+    explanationSteps: ["'Latent konflikt' till exempel betyder en konflikt som finns där men inte syns ännu.", "Latent = dold men existerande."],
+  },
+
+  // ---------------- LÄS (svår nivå) ----------------
+  {
+    subtest: "LAS", concept: "slutledning", difficulty: 1450,
+    stem:
+      "Text: \"Även de mest sofistikerade makroekonomiska modellerna bygger på antaganden om rationella aktörer som sällan håller fullt ut i verkligheten. Trots detta fortsätter beslutsfattare att luta sig tungt mot modellernas prognoser vid utformningen av räntebeslut, vilket kritiker menar skapar en falsk känsla av precision i en i grunden osäker vetenskap.\"\n\nVilket antagande ifrågasätter författaren indirekt?",
+    options: [
+      "Att räntebeslut alltid är korrekta",
+      "Att modellernas prognoser är mer exakta än den underliggande osäkerheten motiverar",
+      "Att aktörer på marknaden är irrationella",
+      "Att makroekonomi inte är en vetenskap",
+    ],
+    correctIndex: 1,
+    explanationShort: "Författaren pekar på en 'falsk känsla av precision' trots grundläggande osäkerhet i modellerna.",
+    explanationSteps: ["Nyckelfrasen är 'falsk känsla av precision i en i grunden osäker vetenskap'.", "Det innebär att modellerna framstår som mer exakta än de egentligen är - vilket är precis vad författaren ifrågasätter."],
+  },
+  {
+    subtest: "LAS", concept: "slutledning", difficulty: 1500,
+    stem:
+      "Text: \"Studien fann att deltagare som fick placebo rapporterade nästan lika stor smärtlindring som de som fick den aktiva substansen, men endast när de på förhand informerats om att medicinen 'sannolikt skulle fungera'. När deltagarna istället informerades neutralt uteblev placeboeffekten nästan helt.\"\n\nVad tyder resultaten på?",
+    options: [
+      "Placebo fungerar alltid oavsett information",
+      "Förväntan, inte bara substansen, driver en stor del av smärtlindringen",
+      "Den aktiva substansen saknar effekt",
+      "Neutral information ökar smärtlindringen",
+    ],
+    correctIndex: 1,
+    explanationShort: "Effekten uppstod bara vid positiv förväntan - det visar att förväntan spelar en avgörande roll.",
+    explanationSteps: ["Jämför de två villkoren: positiv information gav effekt, neutral information gav ingen effekt.", "Skillnaden mellan villkoren var enbart informationen/förväntan - alltså är det förväntan som driver effekten."],
+  },
+  {
+    subtest: "LAS", concept: "författarens-syfte", difficulty: 1400,
+    stem:
+      "Text: \"Det har blivit på modet att kalla varje ny teknisk pryl 'revolutionerande' - ett ord som en gång reserverades för uppfinningar som faktiskt omkullkastade hur vi lever. Om allt är en revolution, är ingenting det längre.\"\n\nVad är författarens huvudsakliga poäng?",
+    options: [
+      "Ny teknik är sällan användbar",
+      "Överanvändningen av ordet 'revolutionerande' urholkar dess betydelse",
+      "Alla tekniska uppfinningar är revolutionerande",
+      "Ordet 'revolutionerande' bör förbjudas",
+    ],
+    correctIndex: 1,
+    explanationShort: "Sista meningen sammanfattar poängen: om ordet används om allt förlorar det sin mening.",
+    explanationSteps: ["Författaren kontrasterar ordets ursprungliga, snäva betydelse med dagens slentrianmässiga användning.", "'Om allt är en revolution, är ingenting det längre' är kärnan i kritiken."],
+  },
+  {
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1350,
+    stem:
+      "Text: \"Enligt avtalet utgår ersättning endast om skadan inträffat inom garantitiden OCH kan härledas till ett fabrikationsfel - inte om skadan orsakats av felaktig användning, oavsett när den inträffade.\"\n\nI vilket fall utgår INTE ersättning enligt avtalet?",
+    options: [
+      "Skada orsakad av fabrikationsfel inom garantitiden",
+      "Skada orsakad av felaktig användning inom garantitiden",
+      "Skada som upptäcks första veckan",
+      "Skada som anmäls skriftligt",
+    ],
+    correctIndex: 1,
+    explanationShort: "Texten anger explicit att felaktig användning inte ger ersättning, oavsett tidpunkt.",
+    explanationSteps: ["Villkoret kräver BÅDA sakerna: garantitid OCH fabrikationsfel.", "Felaktig användning är uttryckligen undantaget, även om skadan sker inom garantitiden."],
+  },
+  {
+    subtest: "LAS", concept: "huvudbudskap", difficulty: 1400,
+    stem:
+      "Text: \"Många hävdar att fyradagarsvecka skulle sänka produktiviteten drastiskt. Försök i flera länder visar dock att produktionen per timme ofta ökar tillräckligt för att kompensera den kortare arbetstiden - även om resultaten varierar kraftigt mellan branscher och således inte kan generaliseras rakt av.\"\n\nVad är textens huvudbudskap?",
+    options: [
+      "Fyradagarsvecka fungerar i alla branscher",
+      "Fyradagarsvecka sänker alltid produktiviteten",
+      "Effekterna av fyradagarsvecka är lovande men branschberoende, inte entydiga",
+      "Produktivitet per timme är irrelevant",
+    ],
+    correctIndex: 2,
+    explanationShort: "Texten nyanserar det positiva resultatet med att det varierar kraftigt mellan branscher.",
+    explanationSteps: ["Texten motsäger först den negativa uppfattningen, men nyanserar sedan med 'varierar kraftigt' och 'kan inte generaliseras'.", "Huvudbudskapet är alltså en nyanserad, branschberoende bild - inte ett entydigt ja eller nej."],
+  },
+
+  // ---------------- MEK (svår nivå) ----------------
+  {
+    subtest: "MEK", concept: "sammanhang-logik", difficulty: 1450,
+    stem: "Trots att experterna var ___ oense om orsaken, var de förvånansvärt eniga i sin bedömning av vilka åtgärder som ___.",
+    options: ["djupt / krävdes", "delvis / krävdes", "djupt / uteslöts", "ytligt / krävdes"],
+    correctIndex: 0,
+    explanationShort: "Kontrasten kräver att experterna var djupt oense om orsaken men ändå eniga om vilka åtgärder som krävdes.",
+    explanationSteps: ["'Trots att X, förvånansvärt Y' bygger på en tydlig kontrast.", "Djup oenighet om orsak men enighet om vilka åtgärder som krävdes ger den starkaste, mest logiska kontrasten."],
+  },
+  {
+    subtest: "MEK", concept: "sammanhang-logik", difficulty: 1350,
+    stem: "Ju mer komplex lagstiftningen blev, desto ___ blev det för småföretag att navigera den utan att anlita ___ hjälp.",
+    options: ["enklare / extern", "svårare / extern", "svårare / egen", "enklare / egen"],
+    correctIndex: 1,
+    explanationShort: "Mer komplex lagstiftning gör det rimligen svårare, och kräver då extern (inhyrd) hjälp.",
+    explanationSteps: ["'Ju mer X, desto Y' kräver en logisk, positiv koppling.", "Mer komplexitet → svårare att klara själv → behov av extern hjälp."],
+  },
+  {
+    subtest: "MEK", concept: "ordval-nyans", difficulty: 1400,
+    stem: "Fastän lösningen var ___ ur ett tekniskt perspektiv, visade den sig vara ___ att implementera i praktiken på grund av organisatoriskt motstånd.",
+    options: ["elegant / enkel", "elegant / svår", "klumpig / svår", "klumpig / enkel"],
+    correctIndex: 1,
+    explanationShort: "Kontrasten 'fastän...men' kräver att en tekniskt elegant lösning ändå blev svår att genomföra.",
+    explanationSteps: ["'Fastän X, ändå Y' signalerar motsättning.", "Tekniskt elegant men svår att implementera pga organisatoriskt motstånd ger en tydlig, sammanhängande kontrast."],
+  },
+  {
+    subtest: "MEK", concept: "sammanhang-logik", difficulty: 1300,
+    stem: "Eftersom underlaget var ___ ofullständigt, kunde kommittén inte annat än att ___ sitt beslut till nästa möte.",
+    options: ["endast / fastställa", "grovt / skjuta upp", "grovt / fastställa", "endast / skjuta upp"],
+    correctIndex: 1,
+    explanationShort: "Grovt ofullständigt underlag förklarar varför beslutet sköts upp, inte fastställdes.",
+    explanationSteps: ["Ett grovt ofullständigt underlag gör det logiskt omöjligt att fastställa ett beslut.", "Den enda konsekventa följden är att kommittén sköt upp beslutet."],
+  },
+  {
+    subtest: "MEK", concept: "ordval-nyans", difficulty: 1400,
+    stem: "Marknaden reagerade ___ på beskedet, vilket tvingade analytiker att snabbt ___ sina tidigare prognoser.",
+    options: ["oväntat kraftigt / ompröva", "som väntat / bekräfta", "oväntat kraftigt / bekräfta", "som väntat / ompröva"],
+    correctIndex: 0,
+    explanationShort: "Att analytiker 'tvingades snabbt' agera visar att reaktionen var oväntad, vilket kräver omprövning snarare än bekräftelse.",
+    explanationSteps: ["Ordet 'tvingade...snabbt' signalerar brådska orsakad av något oväntat.", "En oväntat kraftig reaktion tvingar fram en omprövning av prognoserna, inte en bekräftelse av dem."],
+  },
+
+  // ---------------- ELF (svår nivå) ----------------
+  {
+    subtest: "ELF", concept: "engelsk-ordförståelse", difficulty: 1350,
+    stem: "The word that is closest in meaning to \"UBIQUITOUS\" is:",
+    options: ["Rare", "Omnipresent", "Hidden", "Temporary"],
+    correctIndex: 1,
+    explanationShort: "\"Ubiquitous\" means present or existing everywhere at once.",
+    explanationSteps: ["Ubiquitous describes something found everywhere, all the time.", "'Omnipresent' captures this meaning most closely."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-ordförståelse", difficulty: 1300,
+    stem: "The word that is closest in meaning to \"PRAGMATIC\" is:",
+    options: ["Idealistic", "Practical", "Emotional", "Theoretical"],
+    correctIndex: 1,
+    explanationShort: "\"Pragmatic\" means dealing with things realistically, in a practical way.",
+    explanationSteps: ["A pragmatic person focuses on what works in practice, not abstract ideals.", "'Practical' is the closest synonym."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1550,
+    stem:
+      "\"The committee's report, while ostensibly neutral, repeatedly emphasized the economic costs of the proposed regulation while relegating its public health benefits to a single footnote - a structural choice that speaks louder than any explicit conclusion.\"\n\nWhat does the passage suggest about the report?",
+    options: [
+      "It is completely balanced and neutral",
+      "Its structure reveals an implicit bias despite claims of neutrality",
+      "It focuses primarily on public health benefits",
+      "It explicitly argues against the regulation",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage argues that the report's structure (emphasis vs. footnote) undermines its claim of neutrality.",
+    explanationSteps: ["'While ostensibly neutral' signals that the claimed neutrality is in question.", "The imbalance between emphasized costs and footnoted benefits reveals an implicit bias, as stated directly: 'speaks louder than any explicit conclusion'."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-ordförståelse", difficulty: 1300,
+    stem: "The word that is closest in meaning to \"CANDID\" is:",
+    options: ["Deceptive", "Honest and direct", "Cautious", "Formal"],
+    correctIndex: 1,
+    explanationShort: "\"Candid\" means truthful and straightforward, without holding back.",
+    explanationSteps: ["A candid answer is one given openly and honestly.", "'Honest and direct' is the closest match."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1450,
+    stem:
+      "\"Economists have long debated whether the correlation between education levels and income reflects a causal effect of schooling itself, or simply that individuals predisposed to earn more - due to family background, innate ability, or motivation - also tend to pursue more education.\"\n\nWhat is the central question raised in the passage?",
+    options: [
+      "Whether education is valuable at all",
+      "Whether education causes higher income or merely correlates with pre-existing traits that also predict income",
+      "Whether family background matters more than motivation",
+      "Whether income determines educational access",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage frames a classic causation-versus-correlation debate about education and income.",
+    explanationSteps: ["The key contrast is 'causal effect of schooling' versus factors that predict both education and income independently.", "This is precisely the causation-versus-correlation question stated in the passage."],
+  },
+
+  // ---------------- XYZ (svår nivå) ----------------
+  {
+    subtest: "XYZ", concept: "algebra", difficulty: 1500,
+    stem: "x + y = 12, xy = 32\nKvantitet I: x² + y²\nKvantitet II: 80",
+    options: XYZ_OPTIONS,
+    correctIndex: 2,
+    explanationShort: "x² + y² = (x+y)² - 2xy = 144 - 64 = 80. Kvantiteterna är lika.",
+    explanationSteps: ["(x+y)² = x² + 2xy + y² = 144.", "x² + y² = 144 - 2xy = 144 - 64 = 80.", "80 = 80, kvantiteterna är lika."],
+  },
+  {
+    subtest: "XYZ", concept: "geometri", difficulty: 1400,
+    stem: "En cirkel är inskriven i en kvadrat med sidan 8.\nKvantitet I: Cirkelns area\nKvantitet II: 50",
+    options: XYZ_OPTIONS,
+    correctIndex: 0,
+    explanationShort: "Cirkelns radie är 4, arean blir π×16 ≈ 50,3, vilket är större än 50.",
+    explanationSteps: ["En inskriven cirkel har diameter lika med kvadratens sida: diameter 8, radie 4.", "Area = π × 4² = 16π ≈ 50,3.", "50,3 > 50, så Kvantitet I är större."],
+  },
+  {
+    subtest: "XYZ", concept: "algebra", difficulty: 1600,
+    stem: "n är ett positivt heltal.\nKvantitet I: Resten när n² divideras med 4\nKvantitet II: Resten när n divideras med 2",
+    options: XYZ_OPTIONS,
+    correctIndex: 2,
+    explanationShort: "Oavsett om n är jämnt eller udda blir resterna alltid lika (0=0 eller 1=1).",
+    explanationSteps: ["Om n är jämnt: n² är delbart med 4 (rest 0), och n delbart med 2 (rest 0).", "Om n är udda: n² ger alltid rest 1 vid division med 4, och n ger rest 1 vid division med 2.", "I båda fallen är resterna lika - kvantiteterna är lika."],
+  },
+  {
+    subtest: "XYZ", concept: "geometri", difficulty: 1500,
+    stem: "a, b och c är sidorna i en triangel där a = 7 och b = 24.\nKvantitet I: c\nKvantitet II: 25",
+    options: XYZ_OPTIONS,
+    correctIndex: 3,
+    explanationShort: "c kan anta många värden mellan 17 och 31 - inget säger att triangeln är rätvinklig.",
+    explanationSteps: ["Triangelolikheten ger 24-7 < c < 24+7, det vill säga 17 < c < 31.", "c skulle kunna vara till exempel 20 (mindre än 25) eller 26 (större än 25).", "Utan mer information går det inte att avgöra."],
+  },
+  {
+    subtest: "XYZ", concept: "algebra", difficulty: 1350,
+    stem: "Kvantitet I: Antalet primtal mellan 1 och 20\nKvantitet II: 8",
+    options: XYZ_OPTIONS,
+    correctIndex: 2,
+    explanationShort: "Primtalen 2, 3, 5, 7, 11, 13, 17, 19 är exakt 8 stycken.",
+    explanationSteps: ["Primtal mellan 1 och 20: 2, 3, 5, 7, 11, 13, 17, 19.", "Det är 8 primtal, vilket är lika med Kvantitet II."],
+  },
+
+  // ---------------- KVA (svår nivå) ----------------
+  {
+    subtest: "KVA", concept: "procent", difficulty: 1400,
+    stem: "En vara kostar ursprungligen 800 kr. Priset höjs först med 25 % och sänks sedan med 20 %. Vad blir slutpriset?",
+    options: ["720 kr", "760 kr", "800 kr", "840 kr"],
+    correctIndex: 2,
+    explanationShort: "800 × 1,25 × 0,80 = 800 kr - höjningen och sänkningen tar exakt ut varandra.",
+    explanationSteps: ["Efter höjning: 800 × 1,25 = 1000 kr.", "Efter sänkning: 1000 × 0,80 = 800 kr.", "Slutpriset är samma som ursprungspriset."],
+  },
+  {
+    subtest: "KVA", concept: "proportionalitet", difficulty: 1350,
+    stem: "Tre vänner delar en vinst i förhållandet 2:3:5. Den som fick minst andel fick 4 000 kr. Hur stor var den totala vinsten?",
+    options: ["16 000 kr", "18 000 kr", "20 000 kr", "24 000 kr"],
+    correctIndex: 2,
+    explanationShort: "2 delar = 4000 kr → 1 del = 2000 kr → totalt 10 delar = 20 000 kr.",
+    explanationSteps: ["Minsta andelen (2 delar) = 4000 kr, så 1 del = 2000 kr.", "Totalt antal delar: 2+3+5 = 10.", "Total vinst: 10 × 2000 = 20 000 kr."],
+  },
+  {
+    subtest: "KVA", concept: "geometri", difficulty: 1450,
+    stem: "Ett rätblock har volymen 360 cm³. Längden är 10 cm och bredden är 6 cm. Hur stor är rätblockets totala ytarea?",
+    options: ["276 cm²", "300 cm²", "312 cm²", "336 cm²"],
+    correctIndex: 2,
+    explanationShort: "Höjden är 6 cm, vilket ger en total ytarea på 312 cm².",
+    explanationSteps: ["Höjd: 360 / (10×6) = 6 cm.", "Ytarea = 2(lb + lh + bh) = 2(60+60+36) = 2×156 = 312 cm²."],
+  },
+  {
+    subtest: "KVA", concept: "algebra", difficulty: 1500,
+    stem: "I en klass är förhållandet mellan pojkar och flickor 3:4. Om 6 pojkar till börjar i klassen blir förhållandet 1:1. Hur många elever gick i klassen från början?",
+    options: ["35", "38", "42", "45"],
+    correctIndex: 2,
+    explanationShort: "Ursprungligen 18 pojkar och 24 flickor, totalt 42 elever.",
+    explanationSteps: ["Låt pojkar = 3k, flickor = 4k.", "(3k + 6) / 4k = 1 → 3k + 6 = 4k → k = 6.", "Pojkar = 18, flickor = 24, totalt 42 elever."],
+  },
+  {
+    subtest: "KVA", concept: "procent", difficulty: 1300,
+    stem: "En sparare sätter in 10 000 kr med 5 % årlig ränta (enkel ränta, ej ränta-på-ränta). Efter hur många år har beloppet vuxit till 13 000 kr?",
+    options: ["5 år", "6 år", "7 år", "8 år"],
+    correctIndex: 1,
+    explanationShort: "Räntan ger 500 kr per år, och 3000/500 = 6 år krävs.",
+    explanationSteps: ["Årlig ränta: 10 000 × 0,05 = 500 kr.", "Tillväxt som krävs: 13 000 - 10 000 = 3000 kr.", "Antal år: 3000 / 500 = 6 år."],
+  },
+
+  // ---------------- NOG (svår nivå) ----------------
+  {
+    subtest: "NOG", concept: "ekvationer", difficulty: 1550,
+    stem: "Är x ett positivt heltal?\n(1) x³ = x\n(2) x² = 1",
+    options: NOG_OPTIONS,
+    correctIndex: 4,
+    explanationShort: "Båda villkoren tillsammans ger x = 1 eller x = -1 - fortfarande inte säkert positivt.",
+    explanationSteps: ["(1): x³ = x ger x(x-1)(x+1) = 0, alltså x = 0, 1 eller -1. Otillräckligt ensamt.", "(2): x² = 1 ger x = 1 eller -1. Otillräckligt ensamt.", "Tillsammans: x = 1 eller -1 (skärningen) - fortfarande osäkert om x är positivt. Även tillsammans otillräckligt: svar E."],
+  },
+  {
+    subtest: "NOG", concept: "algebra", difficulty: 1500,
+    stem: "Är x² mindre än x?\n(1) 0 < x < 1\n(2) x är negativt",
+    options: NOG_OPTIONS,
+    correctIndex: 3,
+    explanationShort: "Båda påståendena ger var för sig ett bestämt svar (ja respektive nej).",
+    explanationSteps: ["(1): Om 0<x<1, till exempel x=0,5, är x²=0,25<0,5=x. Alltid sant här - tillräckligt.", "(2): Om x är negativt är x² alltid positivt och därmed större än x. Ett bestämt 'nej' - också tillräckligt.", "Vardera påståendet räcker för att ge ett entydigt svar: svar D."],
+  },
+  {
+    subtest: "NOG", concept: "procent", difficulty: 1350,
+    stem: "Ett företag hade en omsättning på 5 miljoner kr förra året. Vad blir omsättningen i år?\n(1) Omsättningen väntas öka med samma procentsats som förra året\n(2) Förra årets ökning var 8 %",
+    options: NOG_OPTIONS,
+    correctIndex: 2,
+    explanationShort: "Man behöver både att samma procentsats gäller och vilken procentsats det var.",
+    explanationSteps: ["(1) ensamt: ingen faktisk procentsats anges. Otillräckligt.", "(2) ensamt: ger fjolårets ökning, men inte om samma sats gäller i år. Otillräckligt.", "Tillsammans: 5 × 1,08 = 5,4 miljoner kr. Svar C."],
+  },
+  {
+    subtest: "NOG", concept: "algebra", difficulty: 1400,
+    stem: "Är a > b?\n(1) a² > b²\n(2) a > 0 och b > 0",
+    options: NOG_OPTIONS,
+    correctIndex: 2,
+    explanationShort: "Man behöver veta att båda är positiva för att kunna dra roten ur olikheten korrekt.",
+    explanationSteps: ["(1) ensamt: a²>b² räcker inte om tecknen skiljer sig (t.ex. a=-5, b=1). Otillräckligt.", "(2) ensamt: säger bara att båda är positiva, ingen jämförelse. Otillräckligt.", "Tillsammans: med a,b positiva ger a²>b² att a>b. Svar C."],
+  },
+  {
+    subtest: "NOG", concept: "ekvationer", difficulty: 1450,
+    stem: "x och y är heltal. Är xy jämnt?\n(1) x är jämnt\n(2) x + y är udda",
+    options: NOG_OPTIONS,
+    correctIndex: 3,
+    explanationShort: "Båda påståendena räcker var för sig för att garantera att xy är jämnt.",
+    explanationSteps: ["(1): Om x är jämnt är xy alltid jämnt, oavsett y. Tillräckligt ensamt.", "(2): Om x+y är udda måste ena talet vara jämnt och det andra udda, så xy = jämnt × udda = jämnt. Tillräckligt ensamt.", "Vardera räcker: svar D."],
+  },
+
+  // ---------------- DTK (svår nivå) ----------------
+  {
+    subtest: "DTK", concept: "tabellavläsning", difficulty: 1400,
+    stem: "Tabellen visar ett företags kvartalsvisa vinst (miljoner kr):\nQ1: 12 | Q2: 15 | Q3: 9 | Q4: 18\n\nOm bolagsskatten är 22 % på årsvinsten, hur mycket betalar företaget i skatt för året?",
+    options: ["10,88 miljoner kr", "11,88 miljoner kr", "12,88 miljoner kr", "13,88 miljoner kr"],
+    correctIndex: 1,
+    explanationShort: "Årsvinsten är 54 miljoner kr, och 22 % av det är 11,88 miljoner kr.",
+    explanationSteps: ["Årsvinst: 12+15+9+18 = 54 miljoner kr.", "Skatt: 54 × 0,22 = 11,88 miljoner kr."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1550,
+    stem:
+      "Ett cirkeldiagram visar hur en kommuns budget på 400 miljoner kr fördelas: Skola 40 %, Vård 30 %, Infrastruktur 20 %, Övrigt 10 %. Nästa år ökar den totala budgeten med 10 % och skolans andel ökar till 45 % av den nya budgeten.\n\nHur mycket mer får skolan nästa år jämfört med i år, i kronor?",
+    options: ["28 miljoner kr", "33 miljoner kr", "38 miljoner kr", "44 miljoner kr"],
+    correctIndex: 2,
+    explanationShort: "Skolan går från 160 till 198 miljoner kr, en ökning på 38 miljoner kr.",
+    explanationSteps: ["I år: 40 % × 400 = 160 miljoner kr.", "Nästa år: budget = 400×1,10 = 440 miljoner kr, skola = 45 % × 440 = 198 miljoner kr.", "Ökning: 198 - 160 = 38 miljoner kr."],
+  },
+  {
+    subtest: "DTK", concept: "tabellavläsning", difficulty: 1450,
+    stem:
+      "Tabellen visar medeltemperatur och nederbörd för fyra städer:\nStad A: 12°C, 600 mm | Stad B: 15°C, 450 mm | Stad C: 9°C, 800 mm | Stad D: 18°C, 300 mm\n\nVilken stad har högst nederbörd per grad medeltemperatur?",
+    options: ["Stad A", "Stad B", "Stad C", "Stad D"],
+    correctIndex: 2,
+    explanationShort: "Stad C har cirka 88,9 mm per grad, klart högst av de fyra.",
+    explanationSteps: ["A: 600/12 = 50.", "B: 450/15 = 30.", "C: 800/9 ≈ 88,9.", "D: 300/18 ≈ 16,7.", "Stad C har högst kvot."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1400,
+    stem:
+      "Ett linjediagram visar ett företags kundantal: 2020: 1 200, 2021: 1 500, 2022: 1 800, 2023: 2 000.\n\nUnder vilket år var den procentuella ökningen störst?",
+    options: ["2021", "2022", "2023", "Alla lika"],
+    correctIndex: 0,
+    explanationShort: "Ökningen 2020→2021 var 25 %, klart högst av de tre.",
+    explanationSteps: ["2020→2021: (1500-1200)/1200 = 25 %.", "2021→2022: (1800-1500)/1500 = 20 %.", "2022→2023: (2000-1800)/1800 ≈ 11,1 %.", "Störst ökning: 2021."],
+  },
+  {
+    subtest: "DTK", concept: "kartor-skala", difficulty: 1400,
+    stem: "En karta har skalan 1:50 000. Ett rektangulärt naturreservat mäter 4 cm × 3 cm på kartan.\n\nHur stor är reservatets verkliga area i kvadratkilometer?",
+    options: ["1,5 km²", "2 km²", "3 km²", "6 km²"],
+    correctIndex: 2,
+    explanationShort: "Reservatet är i verkligheten 2 km × 1,5 km, vilket ger en area på 3 km².",
+    explanationSteps: ["Längd: 4 cm × 50 000 = 200 000 cm = 2 km.", "Bredd: 3 cm × 50 000 = 150 000 cm = 1,5 km.", "Area: 2 × 1,5 = 3 km²."],
+  },
 ];
 
 const testDefinition = questions.map((q, i) => ({ ...q, order: i }));

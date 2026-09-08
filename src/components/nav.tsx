@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { LayoutDashboard, Dumbbell, CalendarDays, Trophy, User, FileText, LogOut, Moon, Sun, ShieldCheck, Users } from "lucide-react";
+import { LayoutDashboard, Dumbbell, CalendarDays, Trophy, User, FileText, LogOut, Moon, Sun, ShieldCheck, Users, LineChart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/theme-provider";
 import { NotificationBell } from "@/components/notification-bell";
 
 const LINKS = [
   { href: "/dashboard", label: "Hem", icon: LayoutDashboard },
+  { href: "/progress", label: "Utveckling", icon: LineChart },
   { href: "/practice", label: "Träna", icon: Dumbbell },
   { href: "/plan", label: "Plan", icon: CalendarDays },
   { href: "/test", label: "Prov", icon: FileText },
@@ -20,8 +21,8 @@ const LINKS = [
 
 const MOBILE_LINKS = [
   { href: "/dashboard", label: "Hem", icon: LayoutDashboard },
+  { href: "/progress", label: "Utveckling", icon: LineChart },
   { href: "/practice", label: "Träna", icon: Dumbbell },
-  { href: "/plan", label: "Plan", icon: CalendarDays },
   { href: "/test", label: "Prov", icon: FileText },
   { href: "/profile", label: "Profil", icon: User },
 ];

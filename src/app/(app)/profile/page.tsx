@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Trophy, Users, ChevronRight } from "lucide-react";
+import { Trophy, Users, ChevronRight, CalendarDays } from "lucide-react";
 import { requireProfile } from "@/lib/current-user";
 import { prisma } from "@/lib/prisma";
 import { getDashboardData } from "@/lib/dashboard-data";
@@ -26,6 +26,16 @@ export default async function ProfilePage() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:hidden">
+        <Link href="/plan">
+          <Card className="transition-colors hover:border-primary">
+            <CardContent className="flex items-center justify-between p-4">
+              <span className="flex items-center gap-2 text-sm font-medium">
+                <CalendarDays size={16} className="text-success" /> Studieplan
+              </span>
+              <ChevronRight size={16} className="text-muted" />
+            </CardContent>
+          </Card>
+        </Link>
         <Link href="/achievements">
           <Card className="transition-colors hover:border-primary">
             <CardContent className="flex items-center justify-between p-4">

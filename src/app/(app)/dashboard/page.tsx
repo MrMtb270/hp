@@ -147,7 +147,12 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardContent className="p-5">
-            <h2 className="text-sm font-medium text-muted">Svagaste område</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-medium text-muted">Svagaste område</h2>
+              <Link href="/progress" className="text-xs font-medium text-primary hover:underline">
+                Se all utveckling →
+              </Link>
+            </div>
             {data.weaknesses.length === 0 ? (
               <p className="mt-2 text-sm text-muted">Ingen data än - kör en session för att se dina mönster.</p>
             ) : (

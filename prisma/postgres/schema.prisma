@@ -72,7 +72,7 @@ model Profile {
   previousScore     Float?
   selfAssessment    String?           // JSON: { ORD: 3, KVA: 2, ... } 1-5
   onboardingDone    Boolean           @default(false)
-  currentEstimate   Float             @default(0.8)
+  currentEstimate   Float             @default(0)
   level             Int               @default(1)
   xp                Int               @default(0)
   streakCount       Int               @default(0)
