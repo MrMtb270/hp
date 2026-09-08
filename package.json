@@ -12,7 +12,7 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:seed:prod": "tsx prisma/seed.ts",
-    "vercel-build": "prisma generate --schema=prisma/postgres/schema.prisma && (prisma migrate resolve --applied 20260907000000_init --schema=prisma/postgres/schema.prisma || true) && prisma migrate deploy --schema=prisma/postgres/schema.prisma && next build"
+    "vercel-build": "prisma generate --schema=prisma/postgres/schema.prisma && prisma migrate deploy --schema=prisma/postgres/schema.prisma && next build"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
