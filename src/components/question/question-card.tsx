@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { HintButton, ExplainPanel } from "@/components/question/explain-panel";
 import { ErrorReasonPicker } from "@/components/question/error-reason-picker";
+import { QuestionVisual } from "@/components/question/question-visual";
 import type { SanitizedQuestion } from "@/lib/actions/session";
 import type { ErrorReason } from "@prisma/client";
 
@@ -50,6 +51,8 @@ export function QuestionCard({
       </div>
 
       <p className="whitespace-pre-line text-lg font-medium leading-relaxed">{question.stem}</p>
+
+      <QuestionVisual visualType={question.visualType} visualData={question.visualData} />
 
       <div className="mt-5 flex flex-col gap-2.5">
         {question.options.map((opt, i) => {

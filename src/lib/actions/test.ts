@@ -33,6 +33,8 @@ export async function startTestAttempt(testId: string) {
       concept: tq.question.concept,
       stem: tq.question.stem,
       options: JSON.parse(tq.question.options) as string[],
+      visualType: tq.question.visualType,
+      visualData: tq.question.visualData,
     })),
   };
 }

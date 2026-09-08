@@ -9,9 +9,18 @@ import { startTestAttempt, submitTestAnswer, completeTestAttempt } from "@/lib/a
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { QuestionVisual } from "@/components/question/question-visual";
 import { cn, formatScore, subtestLabel } from "@/lib/utils";
 
-type TestQuestion = { id: string; subtest: string; concept: string; stem: string; options: string[] };
+type TestQuestion = {
+  id: string;
+  subtest: string;
+  concept: string;
+  stem: string;
+  options: string[];
+  visualType: string | null;
+  visualData: string | null;
+};
 type CompleteResult = Awaited<ReturnType<typeof completeTestAttempt>>;
 
 export default function TestRunPage() {
@@ -158,6 +167,7 @@ function TestRunInner() {
       <div className="flex flex-1 flex-col items-center overflow-y-auto px-4 py-8">
         <div className="w-full max-w-2xl">
           <p className="whitespace-pre-line text-lg font-medium leading-relaxed">{q.stem}</p>
+          <QuestionVisual visualType={q.visualType} visualData={q.visualData} />
           <div className="mt-5 flex flex-col gap-2.5">
             {q.options.map((opt, i) => (
               <button

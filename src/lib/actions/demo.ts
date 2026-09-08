@@ -11,6 +11,8 @@ export async function getDemoQuestions() {
     concept: q.concept,
     stem: q.stem,
     options: JSON.parse(q.options) as string[],
+    visualType: q.visualType,
+    visualData: q.visualData,
   }));
 }
 

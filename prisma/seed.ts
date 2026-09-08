@@ -17,6 +17,8 @@ type QSeed = {
   hint1?: string;
   hint2?: string;
   hint3?: string;
+  visualType?: "table" | "bar" | "line" | "pie" | "map";
+  visualData?: unknown;
 };
 
 // KVA - kvantitativa jämförelser: jämför två kvantiteter mot varandra.
@@ -258,216 +260,213 @@ const questions: QSeed[] = [
     explanationSteps: ["'Den förmenta lösningen' är en lösning som påstås fungera, utan att det är styrkt.", "Förment = påstådd men inte bevisad."],
   },
 
-  // ================= LÄS - Svensk läsförståelse =================
+  // ================= LÄS - Svensk läsförståelse (fullständiga texter, som på riktiga provet) =================
   {
     subtest: "LAS", concept: "huvudbudskap", difficulty: 1300,
     stem:
-      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara med några knapptryckningar, något som borde vara en dröm för alla historiker. Men den nya tillgängligheten har fört med sig ett oväntat problem: forskare tenderar att i allt högre grad bygga sina slutsatser enbart på det material som råkar vara digitaliserat, medan enorma mängder outforskat material - protokoll, brev och räkenskaper som ännu ligger i fysiska arkiv - i praktiken blir osynliga. Resultatet riskerar att bli en förvriden historieskrivning, inte för att de digitala källorna är felaktiga, utan för att urvalet av vad som digitaliserats sällan är slumpmässigt. Myndigheter och institutioner med resurser att digitalisera sina samlingar överrepresenteras, medan mindre arkiv - ofta de som förvarar material om marginaliserade grupper - halkar efter. Sökbarheten ger på så sätt en illusion av fullständighet som få forskare, upptagna av den nya bekvämligheten, stannar upp för att ifrågasätta.\n\nVad är textens huvudbudskap?",
+      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara med några knapptryckningar, något som borde vara en dröm för alla historiker. Där en forskargeneration tidigare kunde tillbringa månader i dammiga källararkiv för att hitta ett enda relevant brev, räcker det i dag ofta med en sökning i en digital databas för att få fram hundratals träffar på några sekunder. Men den nya tillgängligheten har fört med sig ett oväntat problem: forskare tenderar att i allt högre grad bygga sina slutsatser enbart på det material som råkar vara digitaliserat, medan enorma mängder outforskat material - protokoll, brev och räkenskaper som ännu ligger i fysiska arkiv - i praktiken blir osynliga för den som söker digitalt.\n\nResultatet riskerar att bli en förvriden historieskrivning, inte för att de digitala källorna i sig är felaktiga, utan för att urvalet av vad som digitaliserats sällan är slumpmässigt. Myndigheter och institutioner med resurser att digitalisera sina samlingar överrepresenteras i det sökbara materialet, medan mindre arkiv - ofta de som förvarar material om marginaliserade grupper, lokala föreningar eller regionala särdrag - halkar efter i digitaliseringstakten. Sökbarheten ger på så sätt en illusion av fullständighet som få forskare, upptagna av den nya bekvämligheten, stannar upp för att ifrågasätta.\n\nDet vore emellertid fel att måla upp digitaliseringen som enbart problematisk. Många historiker påpekar att den också demokratiserat forskningen: den som tidigare saknade resurser att resa till ett avlägset nationalarkiv kan i dag utföra motsvarande efterforskning hemifrån, vilket öppnat fältet för fler röster och perspektiv än den traditionella, resursstarka forskarelititen. Frågan är alltså inte om digitalisering ska ske, utan hur den bör prioriteras och kompletteras.\n\nEn del arkivinstitutioner har därför börjat arbeta medvetet med att digitalisera bortglömda samlingar före de mest efterfrågade, just för att motverka snedvridningen. Andra förespråkar att forskare bör åläggas att redovisa vilken andel av sitt källmaterial som är digitalt respektive fysiskt insamlat, ett slags metodologisk transparens som skulle göra snedvridningen synlig även när den inte går att helt undvika. Oavsett vilken lösning som väljs tycks de flesta vara överens om en sak: så länge sökbarheten upplevs som liktydig med fullständighet, riskerar historieskrivningen att formas lika mycket av vad som råkat scannas in som av vad som faktiskt hände.\n\nVad är textens huvudbudskap?",
     options: [
-      "Digitalisering av arkiv är alltid till fördel för forskningen",
-      "Digitaliseringens ojämna urval riskerar att snedvrida historieforskningen",
-      "Fysiska arkiv bör avvecklas till förmån för digitala",
-      "Historiker har slutat använda digitala källor",
+      "Digitalisering av arkiv är alltid till fördel för forskningen och bör prioriteras framför allt annat",
+      "Digitaliseringens ojämna urval riskerar att snedvrida historieforskningen, även om digitalisering också har demokratiserande effekter",
+      "Fysiska arkiv bör avvecklas helt till förmån för digitala samlingar",
+      "Historiker har i praktiken slutat använda digitala källor på grund av kvalitetsproblem",
     ],
     correctIndex: 1,
-    explanationShort: "Texten varnar för att ojämn digitalisering ger en skev bild av historien, trots att källorna i sig är korrekta.",
-    explanationSteps: ["Signalordet 'Men' introducerar textens egentliga poäng.", "'Resultatet riskerar att bli en förvriden historieskrivning' sammanfattar huvudbudskapet direkt."],
+    explanationShort: "Texten varnar för att ojämn digitalisering ger en skev bild av historien, men nyanserar med att digitalisering också demokratiserat forskningen.",
+    explanationSteps: ["Signalordet 'Men' i första stycket introducerar textens huvudinvändning.", "Tredje stycket nyanserar bilden ('det vore fel att måla upp digitaliseringen som enbart problematisk'), vilket visar att huvudbudskapet är en avvägd, inte en ensidigt negativ, hållning."],
   },
   {
-    subtest: "LAS", concept: "slutledning", difficulty: 1350,
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1300,
     stem:
-      "Digitaliseringen av historiska arkiv... Myndigheter och institutioner med resurser att digitalisera sina samlingar överrepresenteras, medan mindre arkiv - ofta de som förvarar material om marginaliserade grupper - halkar efter.\n\nVilken typ av arkiv riskerar enligt texten att bli underrepresenterade i forskningen?",
+      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara... Myndigheter och institutioner med resurser att digitalisera sina samlingar överrepresenteras i det sökbara materialet, medan mindre arkiv - ofta de som förvarar material om marginaliserade grupper, lokala föreningar eller regionala särdrag - halkar efter i digitaliseringstakten.\n\nVilken typ av arkiv riskerar enligt texten att bli underrepresenterade i det sökbara materialet?",
     options: [
       "Arkiv hos välfinansierade myndigheter",
       "De mest omfattande nationalarkiven",
-      "Mindre arkiv med material om marginaliserade grupper",
+      "Mindre arkiv med material om marginaliserade grupper och lokala föreningar",
       "Digitala källor i allmänhet",
     ],
     correctIndex: 2,
-    explanationShort: "Texten anger explicit att mindre arkiv med material om marginaliserade grupper riskerar att halka efter.",
-    explanationSteps: ["Frasen 'ofta de som förvarar material om marginaliserade grupper' pekar direkt ut svaret.", "Kontrasten till 'myndigheter och institutioner med resurser' förstärker vilken grupp som missgynnas."],
+    explanationShort: "Texten anger explicit att mindre arkiv med material om marginaliserade grupper och lokala föreningar riskerar att halka efter.",
+    explanationSteps: ["Frasen 'ofta de som förvarar material om marginaliserade grupper, lokala föreningar eller regionala särdrag' pekar direkt ut svaret.", "Kontrasten till 'myndigheter och institutioner med resurser' förstärker vilken grupp som missgynnas."],
   },
   {
-    subtest: "LAS", concept: "författarens-syfte", difficulty: 1300,
+    subtest: "LAS", concept: "slutledning", difficulty: 1400,
     stem:
-      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara... Resultatet riskerar att bli en förvriden historieskrivning... Sökbarheten ger på så sätt en illusion av fullständighet som få forskare, upptagna av den nya bekvämligheten, stannar upp för att ifrågasätta.\n\nVad vill författaren främst uppnå med texten?",
+      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara... Många historiker påpekar att den också demokratiserat forskningen: den som tidigare saknade resurser att resa till ett avlägset nationalarkiv kan i dag utföra motsvarande efterforskning hemifrån, vilket öppnat fältet för fler röster och perspektiv än den traditionella, resursstarka forskarelititen.\n\nVad talar texten för angående digitaliseringens effekt på vem som i praktiken kan bedriva historisk forskning?",
     options: [
-      "Uppmana till att stoppa all digitalisering",
-      "Väcka medvetenhet om en dold snedvridning i forskningsunderlaget",
-      "Kritisera enskilda historiker för slarv",
-      "Beskriva den tekniska processen för digitalisering",
+      "Den har gjort forskning svårare för de flesta grupper",
+      "Den har öppnat fältet för fler än den traditionella, resursstarka forskareliten",
+      "Den har inte förändrat vilka som forskar",
+      "Endast anställda vid nationalarkiv kan numera forska",
     ],
     correctIndex: 1,
-    explanationShort: "Författaren varnar för en snedvridning som forskare sällan uppmärksammar - syftet är att lyfta fram detta.",
-    explanationSteps: ["Texten är inte kritisk mot digitalisering i sig, utan mot ett ouppmärksammat urvalsproblem.", "Att peka på något 'få stannar upp för att ifrågasätta' visar en avsikt att väcka medvetenhet."],
+    explanationShort: "Texten anger explicit att digitaliseringen öppnat fältet för fler röster än den resursstarka forskareliten.",
+    explanationSteps: ["Meningen om att 'öppnat fältet för fler röster och perspektiv än den traditionella, resursstarka forskarelititen' ger svaret direkt.", "Detta är textens exempel på digitaliseringens demokratiserande, positiva sida."],
   },
   {
-    subtest: "LAS", concept: "författarens-syfte", difficulty: 1300,
+    subtest: "LAS", concept: "författarens-syfte", difficulty: 1350,
     stem:
-      "Det är lätt att avfärda nostalgi som harmlöst svärmeri för det som varit, men psykologisk forskning tyder på att nostalgiska minnen fyller en tydlig funktion: de stärker känslan av mening och social tillhörighet, särskilt i perioder av ensamhet eller stress. Att längta tillbaka är alltså inte simpel verklighetsflykt, utan snarare en psykologisk resurs som hjälper oss återhämta oss - en omvärdering som borde få nostalgin att framstå som något friskare än sitt rykte.\n\nVad är författarens syfte med texten?",
+      "Digitaliseringen av historiska arkiv har på kort tid gjort miljontals dokument sökbara... Oavsett vilken lösning som väljs tycks de flesta vara överens om en sak: så länge sökbarheten upplevs som liktydig med fullständighet, riskerar historieskrivningen att formas lika mycket av vad som råkat scannas in som av vad som faktiskt hände.\n\nVad vill författaren främst uppnå med texten som helhet?",
     options: [
-      "Att varna för riskerna med nostalgi",
-      "Att omvärdera nostalgi som en psykologiskt värdefull funktion snarare än flykt från verkligheten",
-      "Att bevisa att minnen alltid är opålitliga",
-      "Att uppmana läsaren att undvika att tänka på det förflutna",
+      "Uppmana till att stoppa all digitalisering av arkiv",
+      "Väcka medvetenhet om en dold snedvridning i forskningsunderlaget, samtidigt som digitaliseringens fördelar erkänns",
+      "Kritisera enskilda historiker för slarv och forskningsfusk",
+      "Beskriva den tekniska processen för hur arkiv digitaliseras",
     ],
     correctIndex: 1,
-    explanationShort: "Författaren argumenterar mot att avfärda nostalgi och lyfter i stället fram dess psykologiska funktion.",
-    explanationSteps: ["Signalordet 'men' introducerar författarens egentliga ståndpunkt.", "Sista meningens 'omvärdering' visar syftet: att ge nostalgi en mer positiv innebörd."],
+    explanationShort: "Författaren varnar för en snedvridning som forskare sällan uppmärksammar, men balanserar detta mot digitaliseringens demokratiserande fördelar.",
+    explanationSteps: ["Texten är inte ensidigt kritisk mot digitalisering, utan lyfter både problem och fördelar.", "Sista meningens varning om att historieskrivningen formas av 'vad som råkat scannas in' sammanfattar den medvetandehöjande avsikten."],
+  },
+
+  {
+    subtest: "LAS", concept: "huvudbudskap", difficulty: 1350,
+    stem:
+      "Ett av de mest motbjudande fynden inom trafikforskningen, sett ur bilistens perspektiv, är fenomenet inducerad efterfrågan: nya körfält och breddade motorvägar leder sällan till varaktigt minskad trängsel, eftersom den tillfälligt förbättrade framkomligheten lockar fler bilister att välja just den sträckan, tills trängseln återställs till ungefär samma nivå som innan utbyggnaden. Mekanismen är inte mystisk i sig - den följer samma logik som gäller för de flesta resurser vars pris (i det här fallet tidskostnaden för att köra) sjunker: efterfrågan ökar för att fylla det nya utrymmet. Vissa bilister som tidigare valde en omväg börjar köra den nya, snabbare sträckan. Andra som tidigare åkte kollektivt eller cyklade väljer nu bilen i stället. Ytterligare andra flyttar sina resor till högtrafiktid, eftersom vägen nu klarar det utan att köerna blir outhärdliga.\n\nFenomenet är väldokumenterat i decennier av data från städer världen över - från Kalifornien till Seoul - men politiker fortsätter ändå att motivera vägutbyggnader med löften om minskad trängsel. Förklaringen är sannolikt dubbel: dels är den kortsiktiga lättnaden, innan den nya efterfrågan hunnit fylla upp kapaciteten, politiskt värdefull även om den bevisligen är tillfällig, dels är den kontraintuitiva logiken helt enkelt svår att kommunicera till väljare som upplever köer som ett direkt resultat av för få körfält, snarare än ett resultat av hur mänskligt beteende anpassar sig till ny kapacitet.\n\nIroniskt nog gäller samma mekanism omvänt: när körfält i stället tas bort eller stängs av för biltrafik, minskar den totala biltrafiken ofta mer än väntat, eftersom en del resenärer helt enkelt väljer bort bilresan snarare än att envist köa på en smalare väg. Detta fenomen, ibland kallat 'evaporerad trafik', har observerats i flera europeiska städer som stängt av centrala genomfartsleder, utan att det befarade trafikkaoset har uppstått i den utsträckning kritikerna förutspått. Slutsatsen många trafikforskare drar är att kapacitet i praktiken formar efterfrågan snarare än enbart tvärtom - en insikt som utmanar den gängse föreställningen om att fler körfält är den självklara lösningen på trängsel.\n\nVad är textens huvudbudskap?",
+    options: [
+      "Fler körfält minskar alltid trängseln permanent, medan avstängda körfält alltid ökar den",
+      "Vägutbyggnader ger sällan varaktigt minskad trängsel eftersom ökad kapacitet lockar fler bilister, och motsvarande gäller omvänt när kapacitet tas bort",
+      "Politiker saknar helt kunskap om trafikforskning",
+      "Kollektivtrafik är alltid att föredra framför biltrafik",
+    ],
+    correctIndex: 1,
+    explanationShort: "Texten beskriver hur inducerad efterfrågan gör att fler körfält sällan minskar trängseln varaktigt - och att samma mekanism gäller omvänt.",
+    explanationSteps: ["Definitionen av 'inducerad efterfrågan' i första meningen ger grunden för huvudbudskapet.", "Sista stycket visar att samma logik gäller åt båda hållen ('evaporerad trafik'), vilket bekräftar att huvudbudskapet handlar om kapacitetens generella effekt på efterfrågan."],
+  },
+  {
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1300,
+    stem:
+      "Ett av de mest motbjudande fynden inom trafikforskningen... Ironiskt nog gäller samma mekanism omvänt: när körfält i stället tas bort eller stängs av för biltrafik, minskar den totala biltrafiken ofta mer än väntat, eftersom en del resenärer helt enkelt väljer bort bilresan snarare än att envist köa på en smalare väg. Detta fenomen, ibland kallat 'evaporerad trafik', har observerats i flera europeiska städer som stängt av centrala genomfartsleder.\n\nVad kallas fenomenet att trafiken minskar mer än väntat när körfält stängs av, enligt texten?",
+    options: ["Inducerad efterfrågan", "Evaporerad trafik", "Trafikkaos", "Kapacitetschock"],
+    correctIndex: 1,
+    explanationShort: "Texten anger explicit att detta fenomen kallas 'evaporerad trafik'.",
+    explanationSteps: ["Termen står ordagrant i texten, direkt efter beskrivningen av fenomenet."],
   },
   {
     subtest: "LAS", concept: "slutledning", difficulty: 1450,
     stem:
-      "Text: \"Även de mest sofistikerade makroekonomiska modellerna bygger på antaganden om rationella aktörer som sällan håller fullt ut i verkligheten. Trots detta fortsätter beslutsfattare att luta sig tungt mot modellernas prognoser vid utformningen av räntebeslut, vilket kritiker menar skapar en falsk känsla av precision i en i grunden osäker vetenskap.\"\n\nVilket antagande ifrågasätter författaren indirekt?",
+      "Ett av de mest motbjudande fynden inom trafikforskningen... Förklaringen är sannolikt dubbel: dels är den kortsiktiga lättnaden, innan den nya efterfrågan hunnit fylla upp kapaciteten, politiskt värdefull även om den bevisligen är tillfällig, dels är den kontraintuitiva logiken helt enkelt svår att kommunicera till väljare som upplever köer som ett direkt resultat av för få körfält.\n\nVarför fortsätter politiker enligt texten att motivera vägutbyggnader med minskad trängsel, trots att forskningen talar emot det?",
     options: [
-      "Att räntebeslut alltid är korrekta",
-      "Att modellernas prognoser är mer exakta än den underliggande osäkerheten motiverar",
-      "Att aktörer på marknaden är irrationella",
-      "Att makroekonomi inte är en vetenskap",
+      "För att forskningen om inducerad efterfrågan är motsägelsefull och osäker",
+      "För att den kortsiktiga lättnaden är politiskt värdefull och den bakomliggande logiken är svår att kommunicera till väljarna",
+      "För att vägutbyggnader alltid är billigare än andra åtgärder",
+      "För att politiker medvetet vill öka trängseln",
     ],
     correctIndex: 1,
-    explanationShort: "Författaren pekar på en 'falsk känsla av precision' trots grundläggande osäkerhet i modellerna.",
-    explanationSteps: ["Nyckelfrasen är 'falsk känsla av precision i en i grunden osäker vetenskap'.", "Det innebär att modellerna framstår som mer exakta än de egentligen är - vilket är precis vad författaren ifrågasätter."],
-  },
-  {
-    subtest: "LAS", concept: "slutledning", difficulty: 1500,
-    stem:
-      "Text: \"Studien fann att deltagare som fick placebo rapporterade nästan lika stor smärtlindring som de som fick den aktiva substansen, men endast när de på förhand informerats om att medicinen 'sannolikt skulle fungera'. När deltagarna istället informerades neutralt uteblev placeboeffekten nästan helt.\"\n\nVad tyder resultaten på?",
-    options: [
-      "Placebo fungerar alltid oavsett information",
-      "Förväntan, inte bara substansen, driver en stor del av smärtlindringen",
-      "Den aktiva substansen saknar effekt",
-      "Neutral information ökar smärtlindringen",
-    ],
-    correctIndex: 1,
-    explanationShort: "Effekten uppstod bara vid positiv förväntan - det visar att förväntan spelar en avgörande roll.",
-    explanationSteps: ["Jämför de två villkoren: positiv information gav effekt, neutral information gav ingen effekt.", "Skillnaden mellan villkoren var enbart informationen/förväntan - alltså är det förväntan som driver effekten."],
+    explanationShort: "Texten ger explicit två skäl: den kortsiktiga politiska vinsten och svårigheten att kommunicera den kontraintuitiva logiken.",
+    explanationSteps: ["Frasen 'förklaringen är sannolikt dubbel' introducerar de två skälen direkt.", "Båda skälen anges ordagrant i den efterföljande meningen."],
   },
   {
     subtest: "LAS", concept: "författarens-syfte", difficulty: 1400,
     stem:
-      "Text: \"Det har blivit på modet att kalla varje ny teknisk pryl 'revolutionerande' - ett ord som en gång reserverades för uppfinningar som faktiskt omkullkastade hur vi lever. Om allt är en revolution, är ingenting det längre.\"\n\nVad är författarens huvudsakliga poäng?",
-    options: [
-      "Ny teknik är sällan användbar",
-      "Överanvändningen av ordet 'revolutionerande' urholkar dess betydelse",
-      "Alla tekniska uppfinningar är revolutionerande",
-      "Ordet 'revolutionerande' bör förbjudas",
-    ],
-    correctIndex: 1,
-    explanationShort: "Sista meningen sammanfattar poängen: om ordet används om allt förlorar det sin mening.",
-    explanationSteps: ["Författaren kontrasterar ordets ursprungliga, snäva betydelse med dagens slentrianmässiga användning.", "'Om allt är en revolution, är ingenting det längre' är kärnan i kritiken."],
-  },
-  {
-    subtest: "LAS", concept: "detaljförståelse", difficulty: 1350,
-    stem:
-      "Text: \"Enligt avtalet utgår ersättning endast om skadan inträffat inom garantitiden OCH kan härledas till ett fabrikationsfel - inte om skadan orsakats av felaktig användning, oavsett när den inträffade.\"\n\nI vilket fall utgår INTE ersättning enligt avtalet?",
-    options: [
-      "Skada orsakad av fabrikationsfel inom garantitiden",
-      "Skada orsakad av felaktig användning inom garantitiden",
-      "Skada som upptäcks första veckan",
-      "Skada som anmäls skriftligt",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten anger explicit att felaktig användning inte ger ersättning, oavsett tidpunkt.",
-    explanationSteps: ["Villkoret kräver BÅDA sakerna: garantitid OCH fabrikationsfel.", "Felaktig användning är uttryckligen undantaget, även om skadan sker inom garantitiden."],
-  },
-  {
-    subtest: "LAS", concept: "huvudbudskap", difficulty: 1400,
-    stem:
-      "Text: \"Många hävdar att fyradagarsvecka skulle sänka produktiviteten drastiskt. Försök i flera länder visar dock att produktionen per timme ofta ökar tillräckligt för att kompensera den kortare arbetstiden - även om resultaten varierar kraftigt mellan branscher och således inte kan generaliseras rakt av.\"\n\nVad är textens huvudbudskap?",
-    options: [
-      "Fyradagarsvecka fungerar i alla branscher",
-      "Fyradagarsvecka sänker alltid produktiviteten",
-      "Effekterna av fyradagarsvecka är lovande men branschberoende, inte entydiga",
-      "Produktivitet per timme är irrelevant",
-    ],
-    correctIndex: 2,
-    explanationShort: "Texten nyanserar det positiva resultatet med att det varierar kraftigt mellan branscher.",
-    explanationSteps: ["Texten motsäger först den negativa uppfattningen, men nyanserar sedan med 'varierar kraftigt' och 'kan inte generaliseras'.", "Huvudbudskapet är alltså en nyanserad, branschberoende bild - inte ett entydigt ja eller nej."],
-  },
-  {
-    subtest: "LAS", concept: "huvudbudskap", difficulty: 1450,
-    stem:
-      "Den så kallade replikationskrisen inom psykologin har fått förnyad uppmärksamhet sedan storskaliga försök att upprepa klassiska experiment visat att en betydande andel av resultaten inte går att återskapa. Vanligtvis tolkas detta som ett tecken på slarvig metodik eller rentav forskningsfusk, men en mindre uppmärksammad förklaring pekar på ett strukturellt problem i hur forskning belönas: tidskrifter publicerar i praktiken nästan uteslutande studier med statistiskt signifikanta resultat, vilket gör att forskare - medvetet eller omedvetet - testar flera hypoteser och rapporterar bara de som råkar visa sig signifikanta. Resultatet är en litteratur fylld av falska positiva fynd, inte nödvändigtvis för att enskilda forskare fuskat, utan för att selektionstrycket i publiceringssystemet i sig gynnar sådana resultat. Att åtgärda krisen kräver därför inte i första hand strängare etikprövning av enskilda forskare, utan en förändring av hela systemet för hur vetenskapliga resultat belönas och publiceras.\n\nVad är textens huvudbudskap?",
-    options: [
-      "Forskare fuskar allt oftare med sina resultat",
-      "Replikationskrisen beror främst på ett strukturellt problem i publiceringssystemet, inte på enskilt fusk",
-      "Statistisk signifikans är irrelevant för god forskning",
-      "Psykologisk forskning bör läggas ner helt",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten pekar ut publiceringssystemets selektionstryck - inte enskilt fusk - som den huvudsakliga orsaken.",
-    explanationSteps: ["Signalordet 'men' introducerar den mindre uppmärksammade, egentliga förklaringen.", "Sista meningen bekräftar: lösningen är systemförändring, inte hårdare granskning av individer."],
-  },
-  {
-    subtest: "LAS", concept: "slutledning", difficulty: 1500,
-    stem:
-      "Den så kallade replikationskrisen inom psykologin... tidskrifter publicerar i praktiken nästan uteslutande studier med statistiskt signifikanta resultat... Att åtgärda krisen kräver därför inte i första hand strängare etikprövning av enskilda forskare, utan en förändring av hela systemet för hur vetenskapliga resultat belönas och publiceras.\n\nVilken åtgärd skulle författaren sannolikt förorda för att komma till rätta med problemet?",
-    options: [
-      "Hårdare straff för enskilda forskare som fuskar",
-      "Förändringar i hur tidskrifter väljer vilka resultat som publiceras",
-      "Att helt sluta använda statistisk signifikans",
-      "Att endast finansiera forskning som bekräftar tidigare resultat",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten pekar ut publiceringssystemet, inte enskilda forskare, som det som behöver förändras.",
-    explanationSteps: ["Sista meningen anger direkt att lösningen ligger i 'hela systemet för hur... resultat belönas och publiceras'.", "Det pekar mot förändrade publiceringskriterier snarare än straff mot individer."],
-  },
-  {
-    subtest: "LAS", concept: "detaljförståelse", difficulty: 1350,
-    stem:
-      "Den så kallade replikationskrisen inom psykologin... vilket gör att forskare - medvetet eller omedvetet - testar flera hypoteser och rapporterar bara de som råkar visa sig signifikanta.\n\nEnligt texten, varför rapporterar forskare främst signifikanta resultat?",
-    options: [
-      "För att icke-signifikanta resultat alltid är felaktiga",
-      "För att tidskrifter i praktiken nästan uteslutande publicerar sådana resultat",
-      "För att forskare saknar förståelse för statistik",
-      "För att signifikanta resultat är lättare att samla in",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten anger explicit att tidskrifter nästan uteslutande publicerar signifikanta resultat, vilket styr vad som rapporteras.",
-    explanationSteps: ["Orsakskedjan i texten går från publiceringspraxis till forskares beteende.", "'Tidskrifter publicerar... nästan uteslutande... signifikanta resultat' är den angivna orsaken."],
-  },
-  {
-    subtest: "LAS", concept: "huvudbudskap", difficulty: 1400,
-    stem:
-      "Ett av de mest motbjudande fynden inom trafikforskningen, sett ur bilistens perspektiv, är fenomenet inducerad efterfrågan: nya körfält och breddade motorvägar leder sällan till varaktigt minskad trängsel, eftersom den tillfälligt förbättrade framkomligheten lockar fler bilister att välja just den sträckan, tills trängseln återställs till ungefär samma nivå som innan utbyggnaden. Fenomenet är väldokumenterat i decennier av data från städer världen över, men politiker fortsätter ändå att motivera vägutbyggnader med löften om minskad trängsel - antingen för att den kortsiktiga lättnaden är politiskt värdefull även om den bevisligen är tillfällig, eller för att den kontraintuitiva logiken helt enkelt är svår att kommunicera till väljare som upplever köer som ett direkt resultat av för få körfält. Ironiskt nog gäller samma mekanism omvänt: när körfält istället tas bort eller stängs av bilister, minskar den totala biltrafiken ofta mer än väntat, eftersom en del resenärer helt enkelt väljer bort bilresan.\n\nVad är textens huvudbudskap?",
-    options: [
-      "Fler körfält minskar alltid trängseln permanent",
-      "Vägutbyggnader ger sällan varaktigt minskad trängsel, eftersom ökad kapacitet lockar fler bilister",
-      "Politiker förstår inte trafikforskning",
-      "Att ta bort körfält ökar alltid trängseln",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten beskriver hur inducerad efterfrågan gör att fler körfält sällan minskar trängseln varaktigt.",
-    explanationSteps: ["Definitionen av 'inducerad efterfrågan' i första meningen ger huvudbudskapet direkt.", "Resten av texten utvecklar och belägger denna poäng."],
-  },
-  {
-    subtest: "LAS", concept: "slutledning", difficulty: 1500,
-    stem:
-      "Ett av de mest motbjudande fynden inom trafikforskningen... Ironiskt nog gäller samma mekanism omvänt: när körfält istället tas bort eller stängs av bilister, minskar den totala biltrafiken ofta mer än väntat, eftersom en del resenärer helt enkelt väljer bort bilresan.\n\nVad antyder textens sista mening om effekten av att stänga av körfält?",
-    options: [
-      "Att den ökar trängseln kraftigt",
-      "Att en del bilister då väljer att inte köra alls, vilket minskar den totala trafiken",
-      "Att fenomenet inducerad efterfrågan inte gäller i det fallet",
-      "Att kollektivtrafiken automatiskt byggs ut",
-    ],
-    correctIndex: 1,
-    explanationShort: "Texten anger explicit att en del resenärer väljer bort bilresan när körfält stängs av.",
-    explanationSteps: ["Sista meningen beskriver den omvända mekanismen konkret.", "'En del resenärer helt enkelt väljer bort bilresan' ger svaret direkt."],
-  },
-  {
-    subtest: "LAS", concept: "författarens-syfte", difficulty: 1450,
-    stem:
-      "Ett av de mest motbjudande fynden inom trafikforskningen... men politiker fortsätter ändå att motivera vägutbyggnader med löften om minskad trängsel - antingen för att den kortsiktiga lättnaden är politiskt värdefull även om den bevisligen är tillfällig, eller för att den kontraintuitiva logiken helt enkelt är svår att kommunicera till väljare.\n\nVad är författarens sannolika syfte med att nämna att politiker ändå utlovar minskad trängsel?",
+      "Ett av de mest motbjudande fynden inom trafikforskningen... Slutsatsen många trafikforskare drar är att kapacitet i praktiken formar efterfrågan snarare än enbart tvärtom - en insikt som utmanar den gängse föreställningen om att fler körfält är den självklara lösningen på trängsel.\n\nVad är författarens sannolika syfte med att avsluta texten på detta sätt?",
     options: [
       "Att hylla politikers förmåga att lösa trafikproblem",
-      "Att peka på en diskrepans mellan väldokumenterad forskning och politisk retorik",
-      "Att bevisa att politiker aldrig läser forskning",
+      "Att understryka att forskningen utmanar en utbredd, förenklad föreställning om trängsel",
+      "Att bevisa att forskare aldrig har fel",
       "Att föreslå att all vägbyggnation ska stoppas omedelbart",
     ],
     correctIndex: 1,
-    explanationShort: "Författaren kontrasterar den väldokumenterade forskningen med politikers fortsatta löften, och antyder en diskrepans.",
-    explanationSteps: ["Ordet 'ändå' signalerar en motsättning mellan forskningsläget och politikers agerande.", "Syftet är att belysa denna diskrepans, inte att döma ut enskilda politiker."],
+    explanationShort: "Slutmeningen framhåller att forskningsinsikten utmanar den gängse (allmänt spridda) föreställningen om vägutbyggnad.",
+    explanationSteps: ["Ordet 'utmanar den gängse föreställningen' visar att syftet är att ifrågasätta en vanlig missuppfattning, inte att döma ut enskilda aktörer."],
+  },
+
+  {
+    subtest: "LAS", concept: "huvudbudskap", difficulty: 1350,
+    stem:
+      "När stormarknader på 1990-talet började experimentera med att kraftigt utöka sitt sortiment - allt från tjugo till hundratals sorters sylt - utgick man från ett intuitivt antagande: fler valmöjligheter borde göra fler kunder nöjda, eftersom sannolikheten att hitta exakt det man vill ha ökar. Ett numera klassiskt fältexperiment motbevisade dock den intuitionen på ett sätt som fick stor uppmärksamhet inom både psykologi och marknadsföring. När forskare ställde upp två provbord i en livsmedelsbutik - ett med sex sorters sylt, ett med tjugofyra - lockade det större bordet visserligen fler nyfikna kunder att stanna till. Men när det kom till det faktiska köpet visade det sig att det mindre urvalet resulterade i nästan tio gånger fler köp.\n\nFörklaringen som vuxit fram ur senare forskning handlar om vad som brukar kallas beslutsutmattning: ju fler alternativ som ska jämföras, desto mer kognitiv energi krävs för att fatta ett beslut, och desto större blir risken att kunden helt enkelt skjuter upp eller avstår från att välja alls. Till detta kommer en känslomässig komponent - med fler alternativ ökar också risken att i efterhand ångra sitt val, eftersom det alltid finns fler outforskade möjligheter som kunde ha varit bättre. Denna kombination av kognitiv överbelastning och förväntad ånger tycks väga tyngre än fördelen av att fler smaker faktiskt finns tillgängliga.\n\nFenomenet, som ofta kallas valparadoxen, har sedan dess replikerats i flera andra sammanhang - pensionssparande, dejtingappar, restaurangmenyer - om än med varierande styrka. Senare forskning har nyanserat den ursprungliga slutsatsen: effekten tycks vara som starkast när alternativen är svåra att jämföra objektivt (som smaker) och svagare när de går att rangordna längs en tydlig skala (som pris eller kvalitetsbetyg). Trots dessa nyanser har valparadoxen fått påtagliga praktiska konsekvenser: flera stora återförsäljare har medvetet minskat sitt sortiment inom vissa produktkategorier, inte av kostnadsskäl utan i den uttalade förhoppningen att ett mindre men mer kurerat utbud faktiskt ska öka försäljningen snarare än att begränsa den.\n\nVad är textens huvudbudskap?",
+    options: [
+      "Fler valmöjligheter ökar alltid försäljningen, oavsett produktkategori",
+      "Ett för stort utbud kan minska snarare än öka försäljningen, på grund av beslutsutmattning - men effekten varierar beroende på hur lätta alternativen är att jämföra",
+      "Kunder vill aldrig ha fler alternativ att välja mellan",
+      "Sylt säljer alltid bättre än andra produktkategorier",
+    ],
+    correctIndex: 1,
+    explanationShort: "Texten visar att ett större utbud kan minska försäljningen genom beslutsutmattning, men nyanserar med att effekten beror på hur jämförbara alternativen är.",
+    explanationSteps: ["Experimentet i första stycket etablerar huvudfyndet: färre alternativ gav fler köp.", "Tredje stycket nyanserar: effekten är som starkast när alternativ är svåra att jämföra objektivt - denna nyansering är en del av huvudbudskapet."],
+  },
+  {
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1300,
+    stem:
+      "När forskare ställde upp två provbord i en livsmedelsbutik - ett med sex sorters sylt, ett med tjugofyra - lockade det större bordet visserligen fler nyfikna kunder att stanna till. Men när det kom till det faktiska köpet visade det sig att det mindre urvalet resulterade i nästan tio gånger fler köp.\n\nHur många gånger fler köp resulterade det mindre sylturvalet i, enligt experimentet?",
+    options: ["Ungefär två gånger fler", "Ungefär fem gånger fler", "Nästan tio gånger fler", "Tjugofyra gånger fler"],
+    correctIndex: 2,
+    explanationShort: "Texten anger explicit 'nästan tio gånger fler köp'.",
+    explanationSteps: ["Detaljen står ordagrant i texten: 'resulterade i nästan tio gånger fler köp'."],
+  },
+  {
+    subtest: "LAS", concept: "slutledning", difficulty: 1400,
+    stem:
+      "Senare forskning har nyanserat den ursprungliga slutsatsen om valparadoxen: effekten tycks vara som starkast när alternativen är svåra att jämföra objektivt (som smaker) och svagare när de går att rangordna längs en tydlig skala (som pris eller kvalitetsbetyg).\n\nI vilket av följande fall skulle valparadoxen enligt texten sannolikt vara som svagast?",
+    options: [
+      "Vid val mellan olika smaker av glass",
+      "Vid val mellan olika konstverk utifrån personlig smak",
+      "Vid val mellan produkter som enkelt kan rangordnas efter pris",
+      "Vid val mellan olika parfymer",
+    ],
+    correctIndex: 2,
+    explanationShort: "Texten anger att effekten är svagare när alternativen går att rangordna längs en tydlig skala, som pris.",
+    explanationSteps: ["Endast alternativet med produkter som rangordnas efter pris matchar textens beskrivning av lätt jämförbara alternativ.", "Smaker, konstverk och parfymer är exempel på subjektiva, svårjämförda alternativ - motsatsen till det som efterfrågas."],
+  },
+  {
+    subtest: "LAS", concept: "författarens-syfte", difficulty: 1350,
+    stem:
+      "Trots dessa nyanser har valparadoxen fått påtagliga praktiska konsekvenser: flera stora återförsäljare har medvetet minskat sitt sortiment inom vissa produktkategorier, inte av kostnadsskäl utan i den uttalade förhoppningen att ett mindre men mer kurerat utbud faktiskt ska öka försäljningen snarare än att begränsa den.\n\nVad är författarens sannolika syfte med att nämna att återförsäljare medvetet minskat sitt sortiment?",
+    options: [
+      "Att visa att forskningsresultatet fått konkreta, kommersiella konsekvenser i praktiken",
+      "Att kritisera återförsäljare för att fatta dåliga affärsbeslut",
+      "Att bevisa att alla produkter bör ha färre varianter",
+      "Att förklara hur sylt tillverkas industriellt",
+    ],
+    correctIndex: 0,
+    explanationShort: "Exemplet med återförsäljare visar att valparadoxen inte bara är ett teoretiskt fynd utan har påverkat verkliga affärsbeslut.",
+    explanationSteps: ["Frasen 'fått påtagliga praktiska konsekvenser' signalerar att författaren vill visa forskningens verkliga genomslag.", "Exemplet konkretiserar och stärker textens huvudbudskap snarare än att införa ny kritik."],
+  },
+
+  {
+    subtest: "LAS", concept: "huvudbudskap", difficulty: 1400,
+    stem:
+      "Antibiotikaresistens beskrivs ofta i medier som ett slags vapenkapplöpning där bakterier ligger steget före läkemedelsutvecklingen, en bild som är delvis missvisande. Resistens är nämligen sällan gratis för bakterien: de genetiska förändringar som gör en bakterie okänslig för ett antibiotikum medför ofta en biologisk kostnad, till exempel långsammare tillväxt eller sämre förmåga att konkurrera om näring jämfört med icke-resistenta stammar. I frånvaro av antibiotika har därför resistenta bakterier ofta en nackdel, vilket förklarar varför resistensnivåerna i vissa fall faktiskt kan sjunka om ett antibiotikum används mer sparsamt under en period.\n\nDenna insikt har öppnat för en strategi som kallas antibiotikarotation: genom att växla systematiskt mellan olika preparat inom en vårdinstitution kan man utnyttja att resistens mot preparat A ofta innebär en kostnad som gör bakterien sämre rustad när preparat B i stället används. Om rotationen är tillräckligt genomtänkt kan bakteriepopulationen aldrig hinna anpassa sig fullt ut till något av preparaten, eftersom trycket ständigt växlar riktning. Flera sjukhus som infört sådana rotationsscheman har rapporterat lägre resistensnivåer än jämförbara avdelningar som konsekvent använt ett och samma förstahandspreparat.\n\nStrategin är dock inte problemfri. Vissa resistensmekanismer visar sig ge korsresistens - det vill säga skydd mot flera olika preparat samtidigt - vilket gör att en enkel rotation mellan två medel kan misslyckas totalt om bakterien redan bär på en gen som skyddar mot båda. Andra kritiker påpekar att den biologiska kostnaden för resistens ofta är mindre än man först trodde, särskilt när bakterien samtidigt utvecklar kompensatoriska mutationer som återställer tillväxthastigheten utan att offra resistensen. I sådana fall försvinner hela poängen med rotation, eftersom bakterien i praktiken får resistensen 'gratis' på sikt.\n\nSammantaget illustrerar antibiotikarotationens blandade resultat en bredare poäng inom evolutionsbiologin: naturligt urval optimerar inte alltid mot ett enda, stabilt slutmål, utan agerar kontinuerligt utifrån vilka avvägningar som för tillfället är mest kostsamma. Att utnyttja denna dynamik kliniskt kräver därför betydligt mer detaljerad kunskap om varje enskild resistensmekanisms specifika kostnader än vad som fanns tillgänglig när strategin först föreslogs.\n\nVad är textens huvudbudskap?",
+    options: [
+      "Antibiotikaresistens är permanent och kan aldrig minska under några omständigheter",
+      "Resistens medför ofta en biologisk kostnad som kan utnyttjas kliniskt genom rotation, men strategin har viktiga begränsningar",
+      "Antibiotikarotation är en helt misslyckad strategi utan undantag",
+      "Bakterier utvecklas alltid snabbare än läkemedelsindustrin kan hantera",
+    ],
+    correctIndex: 1,
+    explanationShort: "Texten beskriver rotationsstrategins logik och potential, men nyanserar noggrant med dess begränsningar (korsresistens, kompensatoriska mutationer).",
+    explanationSteps: ["Andra stycket förklarar strategins logik och positiva resultat.", "Tredje stycket ('strategin är dock inte problemfri') nyanserar bilden - huvudbudskapet är balanserat, inte ensidigt positivt eller negativt."],
+  },
+  {
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1350,
+    stem:
+      "Vissa resistensmekanismer visar sig ge korsresistens - det vill säga skydd mot flera olika preparat samtidigt - vilket gör att en enkel rotation mellan två medel kan misslyckas totalt om bakterien redan bär på en gen som skyddar mot båda.\n\nVad kallas det när en resistensmekanism ger skydd mot flera antibiotikapreparat samtidigt?",
+    options: ["Antibiotikarotation", "Kompensatorisk mutation", "Korsresistens", "Naturligt urval"],
+    correctIndex: 2,
+    explanationShort: "Texten anger explicit termen 'korsresistens' för detta fenomen.",
+    explanationSteps: ["Termen definieras direkt i texten: 'korsresistens - det vill säga skydd mot flera olika preparat samtidigt'."],
+  },
+  {
+    subtest: "LAS", concept: "slutledning", difficulty: 1450,
+    stem:
+      "Andra kritiker påpekar att den biologiska kostnaden för resistens ofta är mindre än man först trodde, särskilt när bakterien samtidigt utvecklar kompensatoriska mutationer som återställer tillväxthastigheten utan att offra resistensen. I sådana fall försvinner hela poängen med rotation, eftersom bakterien i praktiken får resistensen 'gratis' på sikt.\n\nVad kan enligt texten hända om en bakterie utvecklar en kompensatorisk mutation?",
+    options: [
+      "Den blir känsligare för antibiotika än tidigare",
+      "Den kan behålla sin resistens utan att längre betala den biologiska kostnaden för den",
+      "Rotationsstrategin blir mer effektiv än tidigare",
+      "Bakterien förlorar automatiskt sin förmåga att föröka sig",
+    ],
+    correctIndex: 1,
+    explanationShort: "Texten anger att en kompensatorisk mutation återställer tillväxthastigheten utan att bakterien förlorar resistensen.",
+    explanationSteps: ["Frasen 'återställer tillväxthastigheten utan att offra resistensen' beskriver exakt detta.", "Konsekvensen ('bakterien får resistensen gratis') visar varför rotationsstrategin då förlorar sin poäng."],
+  },
+  {
+    subtest: "LAS", concept: "detaljförståelse", difficulty: 1300,
+    stem:
+      "Flera sjukhus som infört sådana rotationsscheman har rapporterat lägre resistensnivåer än jämförbara avdelningar som konsekvent använt ett och samma förstahandspreparat.\n\nVad rapporterade flera sjukhus som infört rotationsscheman, jämfört med avdelningar som konsekvent använde ett och samma preparat?",
+    options: ["Högre resistensnivåer", "Lägre resistensnivåer", "Ingen skillnad alls i resistensnivåer", "Fler biverkningar hos patienterna"],
+    correctIndex: 1,
+    explanationShort: "Texten anger explicit att dessa sjukhus rapporterat lägre resistensnivåer.",
+    explanationSteps: ["Detaljen står ordagrant i texten: 'rapporterat lägre resistensnivåer än jämförbara avdelningar'."],
   },
 
   // ================= MEK - Meningskomplettering =================
@@ -629,7 +628,133 @@ const questions: QSeed[] = [
     explanationSteps: ["Endast tydliga (inte tvetydiga) signaler ger marknaden underlag att agera i förväg.", "Att räntehöjningen 'skulle genomföras' är den kombination som logiskt förklarar att räntorna steg redan innan beskedet."],
   },
 
-  // ================= ELF - Engelsk läsförståelse =================
+  // ================= ELF - Engelsk läsförståelse (fullständiga texter, som på riktiga provet) =================
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1350,
+    stem:
+      "Organizations rarely abandon failing projects at the moment the evidence turns against them. Instead, a curious pattern recurs across industries: the more resources already invested in an initiative, the more resistant decision-makers become to canceling it, even when every available metric suggests the project has no realistic path to success. Economists call this the sunk cost fallacy - the tendency to let past, unrecoverable expenditures influence decisions about the future, when rationally only future costs and benefits should matter.\n\nWhat makes the fallacy particularly persistent in organizational settings, rather than purely individual ones, is the added layer of reputational risk. An executive who championed a project publicly faces not just the abstract discomfort of admitting a miscalculation, but a concrete professional cost: colleagues may question their judgment, and future proposals may be met with heightened skepticism. Continuing the failing project, by contrast, defers that reckoning indefinitely - the eventual failure, if it comes, can always be attributed to external circumstances rather than the original decision.\n\nSome organizations have attempted structural remedies. A small number of firms have adopted a policy of rotating decision authority: the manager who approves a project's continuation at each review stage is deliberately someone other than the one who originally championed it, precisely to remove the personal stake that fuels escalation of commitment. Early evidence suggests this modestly reduces the average time-to-cancellation for failing projects, though it does not eliminate the pattern entirely, since institutional loyalty to a colleague's project can persist even among reviewers with no personal stake in its outcome. The fallacy, it seems, is woven into organizational culture as much as into individual psychology.\n\nWhat is the main idea of the passage?",
+    options: [
+      "Organizations always cancel failing projects promptly once evidence turns against them",
+      "Past investment irrationally influences decisions to continue failing projects, partly due to reputational concerns",
+      "The sunk cost fallacy only affects individuals, never organizations",
+      "Rotating decision authority always eliminates the sunk cost fallacy completely",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage explains how past investment and reputational risk together drive organizations to irrationally continue failing projects.",
+    explanationSteps: ["The first paragraph defines the sunk cost fallacy and its organizational persistence.", "The second paragraph adds the reputational-risk mechanism, which is central to the passage's explanation."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1400,
+    stem:
+      "Organizations rarely abandon failing projects at the moment the evidence turns against them... Continuing the failing project, by contrast, defers that reckoning indefinitely - the eventual failure, if it comes, can always be attributed to external circumstances rather than the original decision.\n\nAccording to the passage, why might continuing a failing project be preferable for an executive, even against the evidence?",
+    options: [
+      "It saves the company money in the short term",
+      "It defers professional reckoning and allows eventual failure to be blamed on external circumstances",
+      "It guarantees eventual success of the project",
+      "It is required by company law",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage explicitly states that continuing defers the reckoning and allows blame to shift to external circumstances.",
+    explanationSteps: ["The quoted sentence directly states both the deferral and the attribution to external circumstances."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1450,
+    stem:
+      "Some organizations have attempted structural remedies... Early evidence suggests this modestly reduces the average time-to-cancellation for failing projects, though it does not eliminate the pattern entirely, since institutional loyalty to a colleague's project can persist even among reviewers with no personal stake in its outcome.\n\nWhat does the passage say about the effectiveness of rotating decision authority?",
+    options: [
+      "It completely eliminates the sunk cost fallacy in all cases",
+      "It has no measurable effect whatsoever",
+      "It modestly reduces time-to-cancellation but does not eliminate the pattern",
+      "It increases the time-to-cancellation for failing projects",
+    ],
+    correctIndex: 2,
+    explanationShort: "The passage explicitly states the remedy 'modestly reduces' but 'does not eliminate the pattern entirely'.",
+    explanationSteps: ["Both qualifications ('modestly reduces' and 'does not eliminate entirely') are stated directly in the passage."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1350,
+    stem:
+      "Few findings in medical research are as unsettling to surgeons as the results of sham-surgery trials. In several rigorously designed studies, patients undergoing a real surgical procedure - for conditions ranging from knee osteoarthritis to certain forms of chronic back pain - reported improvements in pain and function that were statistically indistinguishable from patients who underwent an elaborate sham procedure: general anesthesia, incisions, and a plausible amount of time in the operating room, but none of the actual surgical intervention.\n\nThe implications are uncomfortable precisely because surgery has long been assumed immune to the placebo effect, an assumption resting on the idea that a mechanical intervention - unlike a sugar pill - produces its benefits through physical rather than psychological mechanisms. Sham-surgery trials complicate this assumption considerably, suggesting that at least part of the benefit attributed to certain procedures may stem from patients' expectations, the ritual of treatment, or the natural fluctuation of chronic conditions over time, rather than from the mechanical correction the surgery is designed to achieve.\n\nNone of this implies that surgery is generally ineffective; for many conditions, sham-controlled trials have confirmed a genuine benefit beyond placebo. Rather, the findings have prompted a push within the surgical community for more rigorous sham-controlled trials before new procedures become standard practice, particularly for conditions where the mechanism of benefit is not fully understood. Critics of this push note the ethical complexity of exposing patients to the risks of anesthesia and incision without any prospect of therapeutic benefit, a tension that has slowed the adoption of sham-controlled methodology even as its scientific value becomes harder to dispute.\n\nWhat do sham-surgery trials suggest, according to the passage?",
+    options: [
+      "Surgery never provides any real benefit beyond placebo",
+      "Part of the benefit attributed to some surgeries may come from expectation or natural symptom fluctuation rather than the mechanical intervention itself",
+      "All surgical procedures are essentially placebo treatments",
+      "Anesthesia is the direct cause of chronic pain",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage states sham-surgery trials suggest part of the benefit may stem from expectation or natural fluctuation, not the mechanical correction.",
+    explanationSteps: ["The second paragraph directly lists 'patients' expectations, the ritual of treatment, or the natural fluctuation of chronic conditions' as possible explanations."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1450,
+    stem:
+      "Few findings in medical research are as unsettling to surgeons as the results of sham-surgery trials... Critics of this push note the ethical complexity of exposing patients to the risks of anesthesia and incision without any prospect of therapeutic benefit, a tension that has slowed the adoption of sham-controlled methodology even as its scientific value becomes harder to dispute.\n\nWhat ethical tension does the passage describe regarding sham-controlled trials?",
+    options: [
+      "Patients are never informed about the nature of the trial",
+      "Exposing patients to surgical risks without therapeutic prospect, versus the scientific value of rigorous testing",
+      "Surgeons refuse to perform any sham surgery under any circumstances",
+      "Sham trials are illegal in most countries",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage explicitly names the tension between exposing patients to risk without benefit and the trials' scientific value.",
+    explanationSteps: ["The final sentence states this tension directly, including both sides of the ethical trade-off."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1300,
+    stem:
+      "Few findings in medical research are as unsettling to surgeons as the results of sham-surgery trials... None of this implies that surgery is generally ineffective; for many conditions, sham-controlled trials have confirmed a genuine benefit beyond placebo.\n\nAccording to the passage, has surgery in general been shown to be ineffective?",
+    options: [
+      "Yes, for all conditions surgery has no real effect",
+      "No - many conditions show a genuine benefit beyond placebo in sham-controlled trials",
+      "The passage does not address the effectiveness of surgery at all",
+      "Only sham surgery has been shown to be effective",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage explicitly denies that surgery is generally ineffective, citing confirmed genuine benefit in many conditions.",
+    explanationSteps: ["The sentence 'None of this implies that surgery is generally ineffective' directly rules out the other options."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1350,
+    stem:
+      "Recommendation algorithms are frequently criticized for creating filter bubbles, narrowing what users encounter to a reflection of their existing preferences. A less discussed but arguably more consequential effect is their tendency to amplify already-popular content at the expense of niche but high-quality alternatives, a dynamic sometimes called algorithmic conformity. Because most recommendation systems rely heavily on aggregate behavioral signals - what similar users have already clicked, watched, or purchased - content that has already accumulated engagement receives disproportionate future exposure, regardless of whether it is genuinely the best match for a given individual.\n\nThis creates a feedback loop: popular items become more popular simply by virtue of being popular, while equally good or better alternatives that happen to lack an early engagement advantage remain permanently obscured. Researchers studying music and book recommendation platforms have found that small, essentially random differences in early engagement - which item happened to be clicked first by a handful of influential users - can determine which of several comparable products becomes a runaway success and which disappears into obscurity, a phenomenon with unsettling implications for cultural diversity.\n\nSome platforms have experimented with deliberately injecting randomness into recommendations, occasionally surfacing lower-engagement content to break the feedback loop and allow genuine quality signals more room to compete with mere popularity. Early results are mixed: users report modestly higher satisfaction with the diversity of what they discover, but overall engagement metrics - the top priority for platforms dependent on advertising revenue - tend to decline slightly, creating a persistent commercial disincentive against adopting such fixes at scale.\n\nWhat is 'algorithmic conformity' as described in the passage?",
+    options: [
+      "The tendency of algorithms to filter out all popular content entirely",
+      "The tendency of algorithms to amplify already-popular content at the expense of niche alternatives",
+      "A method guaranteed to produce cultural diversity",
+      "A type of malicious computer virus",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage explicitly defines algorithmic conformity as amplifying already-popular content over niche alternatives.",
+    explanationSteps: ["The definition appears directly in the first paragraph: 'their tendency to amplify already-popular content at the expense of niche but high-quality alternatives'."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1400,
+    stem:
+      "Recommendation algorithms are frequently criticized for creating filter bubbles... Early results are mixed: users report modestly higher satisfaction with the diversity of what they discover, but overall engagement metrics - the top priority for platforms dependent on advertising revenue - tend to decline slightly, creating a persistent commercial disincentive against adopting such fixes at scale.\n\nAccording to the passage, why do platforms hesitate to inject randomness into recommendations at scale?",
+    options: [
+      "It is technically impossible to implement",
+      "It slightly decreases overall engagement metrics, which are commercially important to advertising-dependent platforms",
+      "Users always dislike any randomness in recommendations",
+      "It is illegal in most jurisdictions",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage states engagement metrics 'tend to decline slightly', creating a commercial disincentive for ad-dependent platforms.",
+    explanationSteps: ["The final sentence directly links declining engagement metrics to platforms' advertising-revenue priorities."],
+  },
+  {
+    subtest: "ELF", concept: "engelsk-läsförståelse", difficulty: 1450,
+    stem:
+      "Recommendation algorithms are frequently criticized for creating filter bubbles... Researchers studying music and book recommendation platforms have found that small, essentially random differences in early engagement - which item happened to be clicked first by a handful of influential users - can determine which of several comparable products becomes a runaway success and which disappears into obscurity.\n\nWhat have researchers found about early engagement differences among comparable products?",
+    options: [
+      "They have no effect on long-term popularity whatsoever",
+      "They can determine which of several comparable products becomes a runaway success",
+      "They only matter for books, never for music",
+      "They always favor the objectively highest-quality product",
+    ],
+    correctIndex: 1,
+    explanationShort: "The passage states these small, essentially random early differences 'can determine which... becomes a runaway success'.",
+    explanationSteps: ["The sentence directly states this causal relationship between early engagement and eventual popularity."],
+  },
   {
     subtest: "ELF", concept: "engelsk-ordförståelse", difficulty: 1350,
     stem: "The word that is closest in meaning to \"UBIQUITOUS\" is:",
@@ -1239,10 +1364,16 @@ const questions: QSeed[] = [
     explanationSteps: ["(1) ensamt: x+y=11, men z:s värde är okänt - kan vara både mindre och större än 11. Otillräckligt.", "(2) ensamt: ger bara en övre gräns för z, inget om x eller y. Otillräckligt.", "Tillsammans: z kan vara 7, 8, 9, 10 eller 11 (eftersom z>y=6 och z<12). För z=7 till 10 gäller x+y=11>z, men för z=11 gäller 11>11 vilket är falskt. Svaret varierar - även tillsammans otillräckligt: svar E."],
   },
 
-  // ================= DTK - Diagram, tabeller och kartor =================
+  // ================= DTK - Diagram, tabeller och kartor (riktiga tabeller, diagram och kartor) =================
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1400,
-    stem: "Tabellen visar ett företags kvartalsvisa vinst (miljoner kr):\nQ1: 12 | Q2: 15 | Q3: 9 | Q4: 18\n\nOm bolagsskatten är 22 % på årsvinsten, hur mycket betalar företaget i skatt för året?",
+    stem: "Tabellen visar ett företags vinst per kvartal. Om bolagsskatten är 22 % på årsvinsten, hur mycket betalar företaget i skatt för året?",
+    visualType: "table",
+    visualData: {
+      title: "Kvartalsvis vinst (miljoner kr)",
+      columns: ["Kvartal", "Vinst (mkr)"],
+      rows: [["Q1", 12], ["Q2", 15], ["Q3", 9], ["Q4", 18]],
+    },
     options: ["10,88 miljoner kr", "11,88 miljoner kr", "12,88 miljoner kr", "13,88 miljoner kr"],
     correctIndex: 1,
     explanationShort: "Årsvinsten är 54 miljoner kr, och 22 % av det är 11,88 miljoner kr.",
@@ -1251,7 +1382,17 @@ const questions: QSeed[] = [
   {
     subtest: "DTK", concept: "diagramtolkning", difficulty: 1550,
     stem:
-      "Ett cirkeldiagram visar hur en kommuns budget på 400 miljoner kr fördelas: Skola 40 %, Vård 30 %, Infrastruktur 20 %, Övrigt 10 %. Nästa år ökar den totala budgeten med 10 % och skolans andel ökar till 45 % av den nya budgeten.\n\nHur mycket mer får skolan nästa år jämfört med i år, i kronor?",
+      "Diagrammet visar hur en kommuns budget på 400 miljoner kr fördelas i år. Nästa år ökar den totala budgeten med 10 % och skolans andel ökar till 45 % av den nya budgeten.\n\nHur mycket mer får skolan nästa år jämfört med i år, i kronor?",
+    visualType: "pie",
+    visualData: {
+      title: "Kommunens budgetfördelning i år",
+      data: [
+        { name: "Skola", value: 40 },
+        { name: "Vård", value: 30 },
+        { name: "Infrastruktur", value: 20 },
+        { name: "Övrigt", value: 10 },
+      ],
+    },
     options: ["28 miljoner kr", "33 miljoner kr", "38 miljoner kr", "44 miljoner kr"],
     correctIndex: 2,
     explanationShort: "Skolan går från 160 till 198 miljoner kr, en ökning på 38 miljoner kr.",
@@ -1259,8 +1400,18 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1450,
-    stem:
-      "Tabellen visar medeltemperatur och nederbörd för fyra städer:\nStad A: 12°C, 600 mm | Stad B: 15°C, 450 mm | Stad C: 9°C, 800 mm | Stad D: 18°C, 300 mm\n\nVilken stad har högst nederbörd per grad medeltemperatur?",
+    stem: "Tabellen visar medeltemperatur och nederbörd för fyra städer.\n\nVilken stad har högst nederbörd per grad medeltemperatur?",
+    visualType: "table",
+    visualData: {
+      title: "Klimatdata för fyra städer",
+      columns: ["Stad", "Medeltemperatur (°C)", "Nederbörd (mm)"],
+      rows: [
+        ["Stad A", 12, 600],
+        ["Stad B", 15, 450],
+        ["Stad C", 9, 800],
+        ["Stad D", 18, 300],
+      ],
+    },
     options: ["Stad A", "Stad B", "Stad C", "Stad D"],
     correctIndex: 2,
     explanationShort: "Stad C har cirka 88,9 mm per grad, klart högst av de fyra.",
@@ -1268,25 +1419,162 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "diagramtolkning", difficulty: 1400,
-    stem:
-      "Ett linjediagram visar ett företags kundantal: 2020: 1 200, 2021: 1 500, 2022: 1 800, 2023: 2 000.\n\nUnder vilket år var den procentuella ökningen störst?",
+    stem: "Diagrammet visar ett företags kundantal 2020-2023.\n\nUnder vilket år var den procentuella ökningen störst?",
+    visualType: "line",
+    visualData: {
+      title: "Kundantal 2020-2023",
+      yLabel: "Antal kunder",
+      data: [
+        { name: "2020", kunder: 1200 },
+        { name: "2021", kunder: 1500 },
+        { name: "2022", kunder: 1800 },
+        { name: "2023", kunder: 2000 },
+      ],
+      series: [{ key: "kunder", label: "Kunder" }],
+    },
     options: ["2021", "2022", "2023", "Alla lika"],
     correctIndex: 0,
     explanationShort: "Ökningen 2020→2021 var 25 %, klart högst av de tre.",
     explanationSteps: ["2020→2021: (1500-1200)/1200 = 25 %.", "2021→2022: (1800-1500)/1500 = 20 %.", "2022→2023: (2000-1800)/1800 ≈ 11,1 %.", "Störst ökning: 2021."],
   },
   {
-    subtest: "DTK", concept: "kartor-skala", difficulty: 1400,
-    stem: "En karta har skalan 1:50 000. Ett rektangulärt naturreservat mäter 4 cm × 3 cm på kartan.\n\nHur stor är reservatets verkliga area i kvadratkilometer?",
-    options: ["1,5 km²", "2 km²", "3 km²", "6 km²"],
+    subtest: "DTK", concept: "kartor-skala", difficulty: 1350,
+    stem: "Kartan visar två städer och avståndet mellan dem. Skalan är 1:50 000.\n\nVad är det verkliga avståndet mellan Björkvik och Sandnäs?",
+    visualType: "map",
+    visualData: {
+      title: "Karta, skala 1:50 000",
+      points: [
+        { id: "a", label: "Björkvik", x: 90, y: 150 },
+        { id: "b", label: "Sandnäs", x: 310, y: 150 },
+      ],
+      edges: [{ from: "a", to: "b", label: "8 cm" }],
+      scaleLabel: "Skala 1:50 000",
+    },
+    options: ["2 km", "4 km", "40 km", "400 km"],
+    correctIndex: 1,
+    explanationShort: "8 cm × 50 000 = 400 000 cm = 4 km.",
+    explanationSteps: ["Verkligt avstånd = kartavstånd × skalfaktor.", "8 cm × 50 000 = 400 000 cm.", "400 000 cm = 4 000 m = 4 km."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1300,
+    stem: "Diagrammet visar marknadsandelar för fyra företag. Marknaden växer med 10 % nästa år, men andelarna förblir desamma. Om marknaden idag är värd 1 000 000 kr, hur mycket kommer Företag B:s andel vara värd nästa år?",
+    visualType: "pie",
+    visualData: {
+      title: "Marknadsandelar i år",
+      data: [
+        { name: "Företag A", value: 35 },
+        { name: "Företag B", value: 30 },
+        { name: "Företag C", value: 20 },
+        { name: "Företag D", value: 15 },
+      ],
+    },
+    options: ["300 000 kr", "310 000 kr", "330 000 kr", "350 000 kr"],
     correctIndex: 2,
-    explanationShort: "Reservatet är i verkligheten 2 km × 1,5 km, vilket ger en area på 3 km².",
-    explanationSteps: ["Längd: 4 cm × 50 000 = 200 000 cm = 2 km.", "Bredd: 3 cm × 50 000 = 150 000 cm = 1,5 km.", "Area: 2 × 1,5 = 3 km²."],
+    explanationShort: "Ny marknad = 1 100 000 kr, 30 % av det = 330 000 kr.",
+    explanationSteps: ["Ny total marknad: 1 000 000 × 1,10 = 1 100 000 kr.", "Företag B:s andel: 30 % × 1 100 000 = 330 000 kr."],
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1300,
-    stem:
-      "Tabellen visar antal nyanmälda patienter och genomsnittlig väntetid (dagar) vid fyra vårdcentraler under ett kvartal:\nCentrum: 420 patienter, 12 dagar | Norr: 310 patienter, 18 dagar | Söder: 275 patienter, 9 dagar | Väster: 190 patienter, 21 dagar\n\nVilken vårdcentral hade flest 'väntedagar' totalt (antal patienter × genomsnittlig väntetid)?",
+    stem: "Tabellen visar antal anställda per avdelning på ett företag.\n\nHur stor andel av alla anställda jobbar inom Sälj?",
+    visualType: "table",
+    visualData: {
+      title: "Anställda per avdelning",
+      columns: ["Avdelning", "Antal anställda"],
+      rows: [["IT", 24], ["Sälj", 36], ["Support", 18], ["Ekonomi", 12]],
+    },
+    options: ["30 %", "36 %", "40 %", "45 %"],
+    correctIndex: 2,
+    explanationShort: "Totalt 90 anställda, 36 inom Sälj = 40 %.",
+    explanationSteps: ["Totalt: 24+36+18+12 = 90.", "Andel Sälj: 36/90 = 0,40 = 40 %."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1300,
+    stem: "Diagrammet visar en hushållsbudget. Månadsinkomsten är 32 000 kr.\n\nHur mycket läggs på sparande?",
+    visualType: "pie",
+    visualData: {
+      title: "Hushållsbudget, andel av inkomst",
+      data: [
+        { name: "Boende", value: 35 },
+        { name: "Mat", value: 20 },
+        { name: "Transport", value: 15 },
+        { name: "Nöje", value: 10 },
+        { name: "Sparande", value: 20 },
+      ],
+    },
+    options: ["5 400 kr", "6 000 kr", "6 400 kr", "7 000 kr"],
+    correctIndex: 2,
+    explanationShort: "20 % av 32 000 kr = 6 400 kr.",
+    explanationSteps: ["Sparande = 20 % av 32 000.", "0,20 × 32 000 = 6 400 kr."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1350,
+    stem: "Diagrammet visar en akties stängningskurs (kr) under en vecka.\n\nVad var den största enskilda dagsförändringen (i kronor, mellan två på varandra följande dagar)?",
+    visualType: "line",
+    visualData: {
+      title: "Aktiens stängningskurs under en vecka",
+      yLabel: "Kurs (kr)",
+      data: [
+        { name: "Mån", kurs: 120 },
+        { name: "Tis", kurs: 126 },
+        { name: "Ons", kurs: 118 },
+        { name: "Tors", kurs: 130 },
+        { name: "Fre", kurs: 136 },
+      ],
+      series: [{ key: "kurs", label: "Kurs" }],
+    },
+    options: ["6 kr", "8 kr", "10 kr", "12 kr"],
+    correctIndex: 3,
+    explanationShort: "Störst förändring var mellan onsdag och torsdag: 130 - 118 = 12 kr.",
+    explanationSteps: ["Mån→Tis: +6. Tis→Ons: -8. Ons→Tors: +12. Tors→Fre: +6.", "Störst förändring (absolut) är 12 kr."],
+  },
+  {
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1300,
+    stem: "Diagrammet visar regnmängd (mm) per månad.\n\nVad var den genomsnittliga regnmängden dessa fyra månader?",
+    visualType: "bar",
+    visualData: {
+      title: "Regnmängd per månad",
+      yLabel: "mm",
+      data: [
+        { name: "Jan", regn: 40 },
+        { name: "Feb", regn: 35 },
+        { name: "Mar", regn: 50 },
+        { name: "Apr", regn: 45 },
+      ],
+      series: [{ key: "regn", label: "Regnmängd" }],
+    },
+    options: ["40 mm", "42,5 mm", "45 mm", "47,5 mm"],
+    correctIndex: 1,
+    explanationShort: "(40+35+50+45)/4 = 170/4 = 42,5 mm.",
+    explanationSteps: ["Summa: 40 + 35 + 50 + 45 = 170.", "Genomsnitt: 170 / 4 = 42,5 mm."],
+  },
+  {
+    subtest: "DTK", concept: "tabellavläsning", difficulty: 1300,
+    stem: "Tabellen visar exportvärde (miljoner kr) för tre år.\n\nHur stor var den procentuella ökningen från 2022 till 2023?",
+    visualType: "table",
+    visualData: {
+      title: "Exportvärde per år",
+      columns: ["År", "Exportvärde (mkr)"],
+      rows: [["2021", "800"], ["2022", "920"], ["2023", "1 012"]],
+    },
+    options: ["8 %", "9 %", "10 %", "12 %"],
+    correctIndex: 2,
+    explanationShort: "(1012-920)/920 = 92/920 = 0,10 = 10 %.",
+    explanationSteps: ["Ökning: 1012 - 920 = 92 miljoner kr.", "Procentuell ökning: 92 / 920 = 0,10 = 10 %."],
+  },
+  {
+    subtest: "DTK", concept: "tabellavläsning", difficulty: 1300,
+    stem: "Tabellen visar antal nyanmälda patienter och genomsnittlig väntetid (dagar) vid fyra vårdcentraler under ett kvartal.\n\nVilken vårdcentral hade flest 'väntedagar' totalt (antal patienter × genomsnittlig väntetid)?",
+    visualType: "table",
+    visualData: {
+      title: "Patienter och väntetid per vårdcentral",
+      columns: ["Vårdcentral", "Patienter", "Väntetid (dagar)"],
+      rows: [
+        ["Centrum", 420, 12],
+        ["Norr", 310, 18],
+        ["Söder", 275, 9],
+        ["Väster", 190, 21],
+      ],
+    },
     options: ["Centrum", "Norr", "Söder", "Väster"],
     correctIndex: 1,
     explanationShort: "Norr hade flest totala väntedagar: 310 × 18 = 5 580.",
@@ -1294,17 +1582,62 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1350,
-    stem:
-      "Tabellen visar antal invånare i fyra kommuner år 2015 och 2023:\nKommun A: 2015: 24 000, 2023: 27 600 | Kommun B: 2015: 41 000, 2023: 43 050 | Kommun C: 2015: 15 500, 2023: 13 950 | Kommun D: 2015: 60 000, 2023: 66 000\n\nVilken kommun hade störst procentuell förändring i befolkning mellan 2015 och 2023 (oavsett riktning)?",
+    stem: "Tabellen visar antal invånare i fyra kommuner år 2015 och 2023.\n\nVilken kommun hade störst procentuell förändring i befolkning mellan 2015 och 2023 (oavsett riktning)?",
+    visualType: "table",
+    visualData: {
+      title: "Befolkning 2015 och 2023",
+      columns: ["Kommun", "2015", "2023"],
+      rows: [
+        ["Kommun A", "24 000", "27 600"],
+        ["Kommun B", "41 000", "43 050"],
+        ["Kommun C", "15 500", "13 950"],
+        ["Kommun D", "60 000", "66 000"],
+      ],
+    },
     options: ["Kommun A", "Kommun B", "Kommun C", "Kommun D"],
     correctIndex: 0,
     explanationShort: "Kommun A hade störst procentuell förändring: +15 %.",
     explanationSteps: ["A: (27 600-24 000)/24 000 = 15 %.", "B: (43 050-41 000)/41 000 = 5 %.", "C: (13 950-15 500)/15 500 = -10 %.", "D: (66 000-60 000)/60 000 = 10 %.", "Kommun A har störst förändring i absoluta tal (15 %)."],
   },
   {
+    subtest: "DTK", concept: "kartor-skala", difficulty: 1500,
+    stem: "Kartan visar det planerade dricksvattenledningsnätet mellan fyra samhällen, med ledningarnas längder markerade i kilometer. Vattenverket ligger i Almby.\n\nVilken är den kortaste ledningssträckningen för att nå Cederäng från Almby - direkt eller via de andra samhällena?",
+    visualType: "map",
+    visualData: {
+      title: "Planerat vattenledningsnät",
+      points: [
+        { id: "a", label: "Almby", x: 70, y: 60 },
+        { id: "b", label: "Björkhult", x: 260, y: 50 },
+        { id: "c", label: "Cederäng", x: 330, y: 210 },
+        { id: "d", label: "Dalby", x: 100, y: 240 },
+      ],
+      edges: [
+        { from: "a", to: "b", label: "12 km" },
+        { from: "b", to: "c", label: "18 km" },
+        { from: "c", to: "d", label: "9 km" },
+        { from: "d", to: "a", label: "14 km" },
+        { from: "a", to: "c", label: "22 km" },
+      ],
+      scaleLabel: "Ledningarnas verkliga längd anges i km vid respektive sträcka.",
+    },
+    options: ["18 km", "22 km", "23 km", "30 km"],
+    correctIndex: 1,
+    explanationShort: "Direkt ledning Almby-Cederäng är 22 km, kortare än via Björkhult (30 km) eller via Dalby (23 km).",
+    explanationSteps: ["Direkt: Almby-Cederäng = 22 km.", "Via Björkhult: 12+18 = 30 km.", "Via Dalby: 14+9 = 23 km.", "Kortast är den direkta sträckningen: 22 km."],
+  },
+  {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1350,
-    stem:
-      "Tabellen visar antal sålda biljetter och total intäkt för tre biografer en helg:\nBio Stjärnan: 1 200 biljetter, 168 000 kr | Bio Kometen: 950 biljetter, 142 500 kr | Bio Solen: 1 500 biljetter, 187 500 kr\n\nVilken biograf hade högst genomsnittligt biljettpris?",
+    stem: "Tabellen visar antal sålda biljetter och total intäkt för tre biografer en helg.\n\nVilken biograf hade högst genomsnittligt biljettpris?",
+    visualType: "table",
+    visualData: {
+      title: "Biljettförsäljning en helg",
+      columns: ["Biograf", "Biljetter", "Intäkt (kr)"],
+      rows: [
+        ["Bio Stjärnan", "1 200", "168 000"],
+        ["Bio Kometen", "950", "142 500"],
+        ["Bio Solen", "1 500", "187 500"],
+      ],
+    },
     options: ["Bio Stjärnan", "Bio Kometen", "Bio Solen", "Alla lika"],
     correctIndex: 1,
     explanationShort: "Bio Kometen hade högst snittpris: 142 500 / 950 = 150 kr.",
@@ -1312,8 +1645,17 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1400,
-    stem:
-      "Tabellen visar ett företags personalkostnader och omsättning (miljoner kr) för tre år:\n2021: personalkostnad 18, omsättning 90 | 2022: personalkostnad 21, omsättning 105 | 2023: personalkostnad 26, omsättning 118\n\nUnder vilket år var personalkostnaden som andel av omsättningen högst?",
+    stem: "Tabellen visar ett företags personalkostnader och omsättning (miljoner kr) för tre år.\n\nUnder vilket år var personalkostnaden som andel av omsättningen högst?",
+    visualType: "table",
+    visualData: {
+      title: "Personalkostnad och omsättning",
+      columns: ["År", "Personalkostnad (mkr)", "Omsättning (mkr)"],
+      rows: [
+        ["2021", 18, 90],
+        ["2022", 21, 105],
+        ["2023", 26, 118],
+      ],
+    },
     options: ["2021", "2022", "2023", "Alla lika"],
     correctIndex: 2,
     explanationShort: "2023 hade högst andel: cirka 22 %, mot 20 % de föregående åren.",
@@ -1321,8 +1663,18 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1500,
-    stem:
-      "Tabellen visar antal deltagare och genomsnittligt resultat (poäng) i en tävling för fyra lag:\nLag A: 12 deltagare, 45 poäng | Lag B: 8 deltagare, 52 poäng | Lag C: 15 deltagare, 38 poäng | Lag D: 10 deltagare, 48 poäng\n\nVad var det sammanlagda genomsnittliga resultatet för alla deltagare (viktat medelvärde)?",
+    stem: "Tabellen visar antal deltagare och genomsnittligt resultat (poäng) i en tävling för fyra lag.\n\nVad var det sammanlagda genomsnittliga resultatet för alla deltagare (viktat medelvärde)?",
+    visualType: "table",
+    visualData: {
+      title: "Tävlingsresultat per lag",
+      columns: ["Lag", "Deltagare", "Poäng (snitt)"],
+      rows: [
+        ["Lag A", 12, 45],
+        ["Lag B", 8, 52],
+        ["Lag C", 15, 38],
+        ["Lag D", 10, 48],
+      ],
+    },
     options: ["42,1 poäng", "43,4 poäng", "44,6 poäng", "45,8 poäng"],
     correctIndex: 2,
     explanationShort: "Det viktade medelvärdet över alla 45 deltagare blir cirka 44,6 poäng.",
@@ -1330,17 +1682,42 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "diagramtolkning", difficulty: 1450,
-    stem:
-      "Ett stapeldiagram visar en butikskedjas försäljning (miljoner kr) per region: Norr 24, Syd 36, Öst 18, Väst 30. Nästa år väntas Norr och Öst växa med 25 % vardera, medan Syd och Väst väntas minska med 10 % vardera.\n\nVad blir den totala försäljningen nästa år?",
+    stem: "Diagrammet visar en butikskedjas försäljning (miljoner kr) per region. Nästa år väntas Norr och Öst växa med 25 % vardera, medan Syd och Väst väntas minska med 10 % vardera.\n\nVad blir den totala försäljningen nästa år?",
+    visualType: "bar",
+    visualData: {
+      title: "Försäljning per region i år",
+      yLabel: "Miljoner kr",
+      data: [
+        { name: "Norr", forsaljning: 24 },
+        { name: "Syd", forsaljning: 36 },
+        { name: "Öst", forsaljning: 18 },
+        { name: "Väst", forsaljning: 30 },
+      ],
+      series: [{ key: "forsaljning", label: "Försäljning" }],
+    },
     options: ["105,9 miljoner kr", "108,9 miljoner kr", "111,9 miljoner kr", "114,9 miljoner kr"],
     correctIndex: 2,
     explanationShort: "Summan av alla fyra regioner nästa år blir 111,9 miljoner kr.",
     explanationSteps: ["Norr: 24×1,25=30. Öst: 18×1,25=22,5.", "Syd: 36×0,90=32,4. Väst: 30×0,90=27.", "Summa: 30+22,5+32,4+27 = 111,9 miljoner kr."],
   },
   {
-    subtest: "DTK", concept: "tabellavläsning", difficulty: 1350,
-    stem:
-      "Tabellen visar antal timmar sol per månad för två städer:\nStad X: Maj 220, Jun 260, Jul 280, Aug 250 | Stad Y: Maj 180, Jun 210, Jul 300, Aug 240\n\nUnder vilken månad var skillnaden mellan städerna störst (i timmar)?",
+    subtest: "DTK", concept: "diagramtolkning", difficulty: 1350,
+    stem: "Diagrammet visar antal soltimmar per månad för två städer.\n\nUnder vilken månad var skillnaden mellan städerna störst (i timmar)?",
+    visualType: "bar",
+    visualData: {
+      title: "Soltimmar per månad, två städer",
+      yLabel: "Timmar",
+      data: [
+        { name: "Maj", stadX: 220, stadY: 180 },
+        { name: "Jun", stadX: 260, stadY: 210 },
+        { name: "Jul", stadX: 280, stadY: 300 },
+        { name: "Aug", stadX: 250, stadY: 240 },
+      ],
+      series: [
+        { key: "stadX", label: "Stad X" },
+        { key: "stadY", label: "Stad Y" },
+      ],
+    },
     options: ["Maj", "Juni", "Juli", "Augusti"],
     correctIndex: 1,
     explanationShort: "Störst skillnad var i juni: 50 timmar.",
@@ -1348,7 +1725,17 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "kartor-skala", difficulty: 1400,
-    stem: "En karta har skalan 1:200 000. En vandringsled är 8,5 cm lång på kartan.\n\nHur lång tid tar det att vandra hela leden om man går med en hastighet av 4 km/h?",
+    stem: "Kartan visar en vandringsled mellan två punkter, med skalan 1:200 000.\n\nHur lång tid tar det att vandra hela leden om man går med en hastighet av 4 km/h?",
+    visualType: "map",
+    visualData: {
+      title: "Vandringsled, skala 1:200 000",
+      points: [
+        { id: "start", label: "Start", x: 60, y: 220 },
+        { id: "mal", label: "Mål", x: 340, y: 90 },
+      ],
+      edges: [{ from: "start", to: "mal", label: "8,5 cm" }],
+      scaleLabel: "Skala 1:200 000",
+    },
     options: ["3 timmar 45 minuter", "4 timmar 15 minuter", "4 timmar 45 minuter", "5 timmar 15 minuter"],
     correctIndex: 1,
     explanationShort: "Ledens verkliga längd är 17 km, vilket tar 4 timmar 15 minuter i 4 km/h.",
@@ -1356,8 +1743,18 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1500,
-    stem:
-      "Tabellen visar ett lands import och export (miljarder kr) under fyra kvartal:\nQ1: import 45, export 38 | Q2: import 52, export 49 | Q3: import 48, export 55 | Q4: import 41, export 47\n\nUnder hela året, var handelsbalansen (export minus import) positiv eller negativ, och med hur mycket?",
+    stem: "Tabellen visar ett lands import och export (miljarder kr) under fyra kvartal.\n\nUnder hela året, var handelsbalansen (export minus import) positiv eller negativ, och med hur mycket?",
+    visualType: "table",
+    visualData: {
+      title: "Import och export per kvartal",
+      columns: ["Kvartal", "Import (mdkr)", "Export (mdkr)"],
+      rows: [
+        ["Q1", 45, 38],
+        ["Q2", 52, 49],
+        ["Q3", 48, 55],
+        ["Q4", 41, 47],
+      ],
+    },
     options: ["Negativ, -3 miljarder kr", "Negativ, -7 miljarder kr", "Positiv, +3 miljarder kr", "Positiv, +7 miljarder kr"],
     correctIndex: 2,
     explanationShort: "Total export (189) översteg total import (186) med 3 miljarder kr - en positiv handelsbalans.",
@@ -1365,8 +1762,18 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "diagramtolkning", difficulty: 1450,
-    stem:
-      "Ett cirkeldiagram visar en universitetsutbildnings studenter fördelat på program: Ekonomi 30 %, Teknik 25 %, Juridik 20 %, Medicin 15 %, Övrigt 10 %. Totalt antal studenter är 4 800. Andelen kvinnor inom Medicin är 65 %.\n\nHur många kvinnliga studenter finns inom Medicin?",
+    stem: "Diagrammet visar en universitetsutbildnings studenter fördelat på program. Totalt antal studenter är 4 800. Andelen kvinnor inom Medicin är 65 %.\n\nHur många kvinnliga studenter finns inom Medicin?",
+    visualType: "pie",
+    visualData: {
+      title: "Studenter per program",
+      data: [
+        { name: "Ekonomi", value: 30 },
+        { name: "Teknik", value: 25 },
+        { name: "Juridik", value: 20 },
+        { name: "Medicin", value: 15 },
+        { name: "Övrigt", value: 10 },
+      ],
+    },
     options: ["432", "468", "504", "540"],
     correctIndex: 1,
     explanationShort: "Antalet studenter inom Medicin är 720, varav 65 % (468) är kvinnor.",
@@ -1374,8 +1781,19 @@ const questions: QSeed[] = [
   },
   {
     subtest: "DTK", concept: "tabellavläsning", difficulty: 1400,
-    stem:
-      "Tabellen visar medelinkomst (tkr/år) för fem yrkesgrupper och andel av arbetskraften de utgör:\nGrupp A: 320 tkr, 15 % | Grupp B: 410 tkr, 25 % | Grupp C: 280 tkr, 30 % | Grupp D: 510 tkr, 10 % | Grupp E: 350 tkr, 20 %\n\nVad är den viktade genomsnittliga medelinkomsten för hela arbetskraften?",
+    stem: "Tabellen visar medelinkomst (tkr/år) för fem yrkesgrupper och andel av arbetskraften de utgör.\n\nVad är den viktade genomsnittliga medelinkomsten för hela arbetskraften?",
+    visualType: "table",
+    visualData: {
+      title: "Medelinkomst per yrkesgrupp",
+      columns: ["Grupp", "Medelinkomst (tkr)", "Andel av arbetskraften"],
+      rows: [
+        ["Grupp A", 320, "15 %"],
+        ["Grupp B", 410, "25 %"],
+        ["Grupp C", 280, "30 %"],
+        ["Grupp D", 510, "10 %"],
+        ["Grupp E", 350, "20 %"],
+      ],
+    },
     options: ["341,5 tkr", "348,5 tkr", "355,5 tkr", "362,5 tkr"],
     correctIndex: 2,
     explanationShort: "Det viktade genomsnittet över alla fem grupper blir 355,5 tkr.",
@@ -1422,6 +1840,8 @@ async function main() {
         hint1: q.hint1,
         hint2: q.hint2,
         hint3: q.hint3,
+        visualType: q.visualType ?? null,
+        visualData: q.visualData ? JSON.stringify(q.visualData) : null,
         isDemo: true,
       },
     });

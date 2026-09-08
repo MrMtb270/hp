@@ -15,10 +15,30 @@ export type SanitizedQuestion = {
   stem: string;
   options: string[];
   difficulty: number;
+  visualType: string | null;
+  visualData: string | null;
 };
 
-function sanitize(q: { id: string; subtest: string; concept: string; stem: string; options: string; difficulty: number }): SanitizedQuestion {
-  return { id: q.id, subtest: q.subtest, concept: q.concept, stem: q.stem, options: JSON.parse(q.options), difficulty: q.difficulty };
+function sanitize(q: {
+  id: string;
+  subtest: string;
+  concept: string;
+  stem: string;
+  options: string;
+  difficulty: number;
+  visualType?: string | null;
+  visualData?: string | null;
+}): SanitizedQuestion {
+  return {
+    id: q.id,
+    subtest: q.subtest,
+    concept: q.concept,
+    stem: q.stem,
+    options: JSON.parse(q.options),
+    difficulty: q.difficulty,
+    visualType: q.visualType ?? null,
+    visualData: q.visualData ?? null,
+  };
 }
 
 export async function startSession(input: {

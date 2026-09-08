@@ -97,6 +97,8 @@ model Question {
   hint1            String?
   hint2            String?
   hint3            String?
+  visualType       String? // "table" | "bar" | "line" | "pie" | "map"
+  visualData       String? // JSON, shape depends on visualType
   timesAnswered    Int      @default(0)
   timesCorrect     Int      @default(0)
   avgSolveTimeSec  Float    @default(0)

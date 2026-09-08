@@ -8,9 +8,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { QuestionVisual } from "@/components/question/question-visual";
 import { cn, subtestLabel } from "@/lib/utils";
 
-type Q = { id: string; subtest: string; concept: string; stem: string; options: string[] };
+type Q = {
+  id: string;
+  subtest: string;
+  concept: string;
+  stem: string;
+  options: string[];
+  visualType: string | null;
+  visualData: string | null;
+};
 
 export default function DemoPage() {
   const [questions, setQuestions] = useState<Q[]>([]);
@@ -90,6 +99,7 @@ export default function DemoPage() {
         <CardContent className="p-6">
           <Badge variant="primary">{subtestLabel(q.subtest)}</Badge>
           <p className="mt-3 whitespace-pre-line text-lg font-medium leading-relaxed">{q.stem}</p>
+          <QuestionVisual visualType={q.visualType} visualData={q.visualData} />
 
           <div className="mt-5 flex flex-col gap-2.5">
             {q.options.map((opt, i) => {
