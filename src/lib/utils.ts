@@ -19,9 +19,9 @@ const SUBTEST_LABELS: Record<string, string> = {
   LAS: "Läsförståelse",
   MEK: "Meningskomplettering",
   ELF: "Engelsk läsförståelse",
-  XYZ: "Kvantitativa jämförelser",
-  KVA: "Kvantitativa resonemang",
-  NOG: "Kvantitativa resonemang (NOG)",
+  XYZ: "Matematisk problemlösning",
+  KVA: "Kvantitativa jämförelser",
+  NOG: "Kvantitativa resonemang",
   DTK: "Diagram, tabeller och kartor",
 };
 
